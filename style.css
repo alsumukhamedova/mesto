@@ -4,7 +4,7 @@
     padding: 0;
     font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .body{
         max-width: 320px;
     }
@@ -18,7 +18,7 @@
     margin: 45px auto 0;
     padding: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .header{
         max-width: 320px;
         margin-top: 28px;
@@ -29,7 +29,7 @@
     margin: 0;
     padding: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .header__logo{
         margin-left: 27px;
     }
@@ -41,7 +41,7 @@
     border: 1px solid #545454;
     padding: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .header__line{
         max-width: 320px;
         margin-top: 31.6px;
@@ -54,7 +54,7 @@
     padding: 0;
     max-width: 880px;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .profile{
         max-width: 282px;
         margin-top: 42px;
@@ -65,7 +65,7 @@
     margin: 0;
     padding: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .avatar{
         margin: auto;
     }
@@ -75,7 +75,7 @@
     display: flex;
     flex-direction: row;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .profile-info{
         margin-top: 26px;
     }
@@ -92,7 +92,7 @@
     padding: 0;
     margin: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .editButton__rectangle{
         width: 18px;
         height: 18px;
@@ -108,7 +108,7 @@
     padding: 0;
     margin: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .profileName{
         font-size: 27px;
         line-height: 33px;
@@ -124,7 +124,7 @@
     padding: 0;
     margin: 16px 0 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .description{
         font-size: 14px;
         line-height: 17px;
@@ -138,7 +138,7 @@
     height: 10px;
     padding: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .editButton{
         margin: 8px 0 14px 10px;
         width: 7.5px;
@@ -148,7 +148,7 @@
 .editButton__editProfile{
     padding: 7px;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .editButton__editProfile{
         padding: 5.25px;
     }
@@ -158,7 +158,7 @@
     margin: 49px 0 0 244px;
     padding: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .addButton{
         margin: 36px auto 0;
     }
@@ -168,7 +168,7 @@
     width: 22px;
     height: 22px;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .addButton__editProfile{
         margin: 17px 132px 17px 134px;
         width: 16px;
@@ -185,7 +185,7 @@
     padding: 0;
     margin: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .addButton__rectangle{
         width: 282px;
         height: 50px;
@@ -201,7 +201,7 @@
     max-width: 880px;
     padding: 0;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .elements{
         margin: 36px auto 0;
     }
@@ -239,10 +239,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
-    letter-spacing: 0em;
     text-align: left;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 400px){
     .footer{
         margin: 48px auto 36px;
         font-size: 14px;

@@ -15,3 +15,5 @@
 Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
 
 Удачи!
+
+[Ссылка на макет в Figma](https://alsumukhamedova.github.io/mesto/)
