@@ -1,0 +1,16 @@
+.elements{
+    margin: 68px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+    grid-template-rows: auto;
+    row-gap: 20px;
+    column-gap: 17px;
+    max-width: 880px;
+    padding: 0;
+
+}
+@media screen and (max-width: 550px){
+    .elements{
+        margin: 36px auto 0;
+    }
+}
