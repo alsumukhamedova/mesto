@@ -16,4 +16,4 @@
 
 Удачи!
 
-[Ссылка на макет в Figma](https://alsumukhamedova.github.io/mesto/)
+[Ссылка на GitHub Pages](https://alsumukhamedova.github.io/mesto/)
