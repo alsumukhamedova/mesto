@@ -6,8 +6,8 @@
     font-size: 14px;
     line-height: 17px;
     box-sizing: border-box;
-    padding: 5px 6px 13px;
-    /*margin-bottom: 4px;*/
+    padding: 0;
+    margin-bottom: 4px;
     outline: none;
 }
 .popup__input:focus {

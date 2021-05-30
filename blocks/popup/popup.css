@@ -8,8 +8,9 @@
     bottom: 0;
     right: 0;
     background-color: rgba(0, 0, 0, .5);
-    margin: 0 auto;
+    margin: 0;
     font-family: 'Inter', 'Arial', sans-serif;
     font-style: normal;
     font-weight: 400;
+    padding: 0;
 }
