@@ -5,7 +5,8 @@
     background-color: #fff;
     border-radius: 10px;
     position: relative;
-    padding: 34px 36px 36px;
+    padding: 34px 36px 0;
+    margin: 0 auto;
 }
 @media screen and (max-width: 600px) {
     .popup__container {
