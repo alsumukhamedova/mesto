@@ -7,7 +7,7 @@
     column-gap: 17px;
     max-width: 880px;
     padding: 0;
-
+    justify-content: center;
 }
 @media screen and (max-width: 550px){
     .elements{

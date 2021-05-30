@@ -1,8 +1,7 @@
 .group{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     max-width: 246px;
     padding: 0;
-    margin: auto;
+    margin: 0 auto;
 }
