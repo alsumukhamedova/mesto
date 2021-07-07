@@ -8,7 +8,9 @@
 }
 @media screen and (max-width: 1000px) {
     .profile {
+        flex-direction: column;
         max-width: 672px;
+        justify-content: center;
     }
 }
 @media screen and (max-width: 750px) {
@@ -20,6 +22,5 @@
 @media screen and (max-width: 550px){
     .profile{
         max-width: 282px;
-        margin-top: 42px;
     }
 }

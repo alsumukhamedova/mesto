@@ -1,7 +1,7 @@
-.group{
+.element__group{
     display: flex;
     justify-content: space-between;
     max-width: 246px;
     padding: 0;
-    margin: 0 auto;
+    margin: 25px auto 0;
 }

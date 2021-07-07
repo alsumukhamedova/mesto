@@ -1,6 +1,6 @@
 .button {
     background: transparent;
-    color: #fff;
+    /*color: #fff;*/
     cursor: pointer;
     transition: all linear .2s;
     outline: none;
