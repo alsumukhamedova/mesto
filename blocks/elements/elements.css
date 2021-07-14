@@ -9,7 +9,7 @@
     padding: 0;
     justify-content: center;
 }
-@media screen and (max-width: 110px){
+@media screen and (max-width: 550px){
     .elements{
         margin: 36px auto 0;
     }
