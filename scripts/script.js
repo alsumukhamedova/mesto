@@ -12,10 +12,10 @@ let profileDescription = document.querySelector('.profile__description');
 function openPopup() {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
-    popup.classList.add('popup_opened');
+    popup.classList.add('popup__opened');
 }
 function closePopup() {
-    popup.classList.remove('popup_opened');
+    popup.classList.remove('popup__opened');
     nameInput.value = '';
     descriptionInput.value = '';
 }

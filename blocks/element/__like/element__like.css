@@ -1,12 +1,12 @@
 .element__like{
     background: transparent;
-    outline: none;
+    /*outline: none;*/
     border: none;
     cursor: pointer;
     align-self: center;
-    width: 20px;
-    height: 19px;
-    padding: 0;
+    /*width: 20px;*/
+    /*height: 19px;*/
+    /*padding: 0;*/
 }
 .element__like:hover {
     opacity: 0.6;
