@@ -1,4 +1,9 @@
 .popup__form {
-    margin: 54px 0 0;
+    margin: 30px 0 0;
     font-family: 'Inter', sans-serif;
+}
+@media screen and (max-width: 450px) {
+    .popup__form{
+        margin-top: 52px;
+    }
 }
