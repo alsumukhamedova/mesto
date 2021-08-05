@@ -10,5 +10,6 @@
     .profile__info{
         margin-left: 0;
         margin-top: 15px;
+        max-width: 189px;
     }
 }
