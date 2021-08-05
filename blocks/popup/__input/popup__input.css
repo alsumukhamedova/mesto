@@ -9,6 +9,7 @@
     margin: 0;
     outline: none;
 }
+
 .popup__input:focus {
     background: rgba(234, 243, 182, 0.171);
     border-bottom: 1px solid rgba(0,0,0,.2);

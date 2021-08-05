@@ -4,6 +4,7 @@
     cursor: pointer;
     align-self: center;
 }
+
 .element__like:hover {
     opacity: 0.6;
 }

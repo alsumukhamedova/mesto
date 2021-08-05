@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 195px;
-    left: 425px;
+    top: 0;
+    left: 0;
     background-color: rgba(0, 0, 0, .5);
     box-sizing: border-box;
     margin: 0;
@@ -13,26 +13,6 @@
     font-weight: 400;
     padding: 0;
     z-index: 1;
-    height: 350px;
-    width: 430px;
-}
-@media screen and (max-width: 1000px) {
-    .popup{
-        top: 150px;
-        left: 150px;
-    }
-}
-@media screen and (max-width: 680px) {
-    .popup{
-        top: 130px;
-        left: 70px;
-    }
-}
-@media screen and (max-width: 550px) {
-    .popup {
-        top: 123px;
-        left: 19px;
-        width: 282px;
-        height: 322px;
-    }
+    height: 100%;
+    width: 100%;
 }
