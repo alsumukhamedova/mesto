@@ -24,7 +24,7 @@
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     .popup__close {
         background-image: url("../../../images/CloseIconMobile.svg");
         background-size: 37px 37px;

@@ -4,10 +4,10 @@
     height: 33px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-bottom: 3.17vw;
+    margin-bottom: 41px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
     .header__logo {
         width: 104px;
         height: 25px;
