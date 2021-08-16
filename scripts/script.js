@@ -5,7 +5,6 @@ let editButton = profile.querySelector('.profile__edit-button');
 let addButton = profile.querySelector('.profile__add-button');
 let popupElementClose = document.querySelector('.popup__add-close');
 let popupClose = document.querySelector('.popup__close');
-let popupAddCardButton = document.querySelector('.popup-element__form');
 let popup = document.querySelector('.popup');
 let popupOpened = document.querySelector('.profile__edit-button');
 let formElement = document.querySelector('.popup__form');
@@ -14,6 +13,12 @@ let descriptionInput = document.querySelector('.popup__input_type_description');
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 let popupElementOpened = document.querySelector('.popup-element')
+let cardNameInput = document.querySelector('.popup__input_type_element');
+let cardLinkInput = document.querySelector('.popup__input_type_url')
+let cardName = document.querySelector('.element__name');
+let popupAddCardButton = document.querySelector('.popup-element__form');
+
+
 
 // Шесть карточек «из коробки»
 const initialCards = [
@@ -84,23 +89,23 @@ function openPopup() {
     descriptionInput.value = profileDescription.textContent;
     popup.classList.add('popup_opened');
 }
-
-// функция открытия попапа 'заполнения карточек'
-function openPopupElement() {
-    popupElementOpened.classList.add('popup_opened');
-}
-
-// функция закрытия попапа 'заполнения карточек'
-function closePopupElement() {
-    popupElementOpened.classList.remove('popup_opened');
-}
-
-// функция закрытия popup через кнопку закрытия
+// функция закрытия popup "редактирования имени и работы в профиле" через кнопку закрытия
 function closePopup() {
     popup.classList.remove('popup_opened');
     nameInput.value = '';
     descriptionInput.value = '';
 }
+
+// function openPopupElement() {
+//     let popupOpened = document.querySelector('.popup-element')
+//     popupOpened.classList.add('popup_opened');
+// }
+//
+// // функция закрытия попапа 'заполнения карточек'
+// function closePopupElement() {
+//     let popupOpened = document.querySelector('.popup-element');
+//     popupOpened.classList.remove('popup_opened');
+// }
 
 // функция удаления карточки
 document.querySelector('.elements').onclick = function(e) {
@@ -111,18 +116,18 @@ document.querySelector('.elements').onclick = function(e) {
     btn.parentElement.remove();
 }
 
-// функция закрытия изображения
-function imageClosed() {
-    let popupOpened = document.querySelector('.popup-image');
-    popupOpened.classList.remove('popup_opened');
-}
-
 // увеличение изображений
 function handleDigitClick(event) {
     console.log(event);
     popupImage.classList.add('popup_opened');
     popupImageImage.src = event.target.src;
     popupImageText.textContent = event.target.parentNode.textContent;
+}
+
+// функция закрытия изображения
+function imageClosed() {
+    let popupOpened = document.querySelector('.popup-image');
+    popupOpened.classList.remove('popup_opened');
 }
 
 // функция для сохранения значений из полей формы при нажатии кнопки "сохранить"
@@ -136,7 +141,7 @@ function addInfo(evt) {
 // слушатели событий
 popupAddCardButton.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    const name = document.querySelector('.popup__input_type_place');
+    const name = document.querySelector('.popup__input_type_element');
     const link = document.querySelector('.popup__input_type_url');
     createCard(name.value, link.value);
     closePopupElement();
