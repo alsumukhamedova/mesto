@@ -96,16 +96,16 @@ function closePopup() {
     descriptionInput.value = '';
 }
 
-// function openPopupElement() {
-//     let popupOpened = document.querySelector('.popup-element')
-//     popupOpened.classList.add('popup_opened');
-// }
-//
-// // функция закрытия попапа 'заполнения карточек'
-// function closePopupElement() {
-//     let popupOpened = document.querySelector('.popup-element');
-//     popupOpened.classList.remove('popup_opened');
-// }
+function openPopupElement() {
+    let popupOpened = document.querySelector('.popup-element')
+    popupOpened.classList.add('popup_opened');
+}
+
+// функция закрытия попапа 'заполнения карточек'
+function closePopupElement() {
+    let popupOpened = document.querySelector('.popup-element');
+    popupOpened.classList.remove('popup_opened');
+}
 
 // функция удаления карточки
 document.querySelector('.elements').onclick = function(e) {
