@@ -28,18 +28,6 @@ function createCard(cardData) {
     cardElement.querySelector('.element__like').addEventListener('click', function(evt) {
         evt.target.classList.toggle('element__like_active');
     });
-    cardElement.querySelector('.element__like').addEventListener('click', function(evt) {
-        evt.target.classList.toggle('element__like_active');
-    })
-    cardElement.querySelector('.element__delete-card').addEventListener('click',  function(e) {
-        const btn = e.target.closest('.element__delete-card');
-        if (!btn) {
-            return;
-        }
-        btn.parentElement.remove();
-    }
-    );
-
 
     cardElement.querySelector('.element__image').addEventListener('click', handleImageClick);
 
@@ -87,13 +75,13 @@ addTemplateCard();
 // }
 
 // Удаления элемента
-// document.querySelector('.elements').onclick = function(e) {
-//     const btn = e.target.closest('.element__delete-card');
-//     if (!btn) {
-//         return;
-//     }
-//     btn.parentElement.remove();
-// }
+document.querySelector('.elements').onclick = function(e) {
+    const btn = e.target.closest('.element__delete-card');
+    if (!btn) {
+        return;
+    }
+    btn.parentElement.remove();
+}
 
 // Увеличение элемента
 function handleImageClick(event) {
