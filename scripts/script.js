@@ -16,8 +16,8 @@ const popupProfileClose = popupProfile.querySelector('.popup__close')
 const popupPlaceClose = popupPlace.querySelector('.popup__close')
 const popupImageClose = popupImage.querySelector('.popup__close')
 
-const ProfileForm = popupProfile.querySelector('.popup__form');
-const PlaceForm = popupPlace.querySelector('.popup__form');
+const profileForm = popupProfile.querySelector('.popup__form');
+const placeForm = popupPlace.querySelector('.popup__form');
 
 const nameInput = document.querySelector('.popup__input_type_name');
 const descriptionInput = document.querySelector('.popup__input_type_description');
@@ -85,13 +85,13 @@ function closePopup(popup) {
 
 // Закрывает popup редактирования профиля
 function closeProfilePopup() {
-    ProfileForm.reset()
+    profileForm.reset()
     closePopup(popupProfile);
 }
 
 // Закрывает popup добавления места
 function closePlacePopup() {
-    PlaceForm.reset()
+    placeForm.reset()
     closePopup(popupPlace)
 }
 
@@ -105,7 +105,7 @@ function handleImageClick(event) {
 }
 
 // Закрытие элемента
-function imageClose() {
+function closeImage() {
     closePopup(popupImage)
 }
 
@@ -117,7 +117,7 @@ function addInfo(evt) {
     closeProfilePopup()
 }
 
-PlaceForm.addEventListener('submit', function (evt) {
+placeForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
     renderCard(name.value, link.value);
     closePlacePopup();
@@ -127,5 +127,5 @@ addButton.addEventListener('click', openPlacePopup);
 editButton.addEventListener('click', openEditPopup);
 popupPlaceClose.addEventListener('click', closePlacePopup);
 popupProfileClose.addEventListener('click', closeProfilePopup);
-ProfileForm.addEventListener('submit', addInfo);
-popupImageClose.addEventListener('click', imageClose);
+profileForm.addEventListener('submit', addInfo);
+popupImageClose.addEventListener('click', closeImage);
