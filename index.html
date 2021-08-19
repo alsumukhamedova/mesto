@@ -8,76 +8,75 @@
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="body">
-    <div class="page">
-        <header class="header">
-            <a href="#" class="header__logo"></a>
-        </header>
-        <main class="content">
-             <section class="profile">
-                <div class="profile__part">
-                    <img src="./images/image.png" alt="Фотография профиля" class="profile__avatar">
-                    <div class="profile__info">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <p class="profile__description">Исследователь океана</p>
-                        <button type="button" class="profile__edit-button">
-                            <img class="profile__editVector" src="./images/profile__editVector.svg" alt="кнопка редактирования профиля">
-                        </button>
+<div class="page">
+    <header class="header">
+        <a href="#" class="header__logo"></a>
+    </header>
+    <main class="content">
+        <section class="profile">
+            <div class="profile__part">
+                <img src="./images/image.png" alt="Фотография профиля" class="profile__avatar">
+                <div class="profile__info">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <p class="profile__description">Исследователь океана</p>
+                    <button type="button" class="profile__edit-button">
+                        <img class="profile__editVector" src="./images/profile__editVector.svg" alt="кнопка редактирования профиля">
+                    </button>
+                </div>
+            </div>
+            <button type="button" class="profile__add-button">
+                <img class="profile__addVector" src="images/profile__addVector.svg" alt="кнопка добавления">
+            </button>
+        </section>
+        <section class="elements">
+            <template id="card-template">
+                <div class="element">
+                    <img src="" alt="" class="element__image">
+                    <button type="button" class="element__delete-card"></button>
+                    <div class="element__group">
+                        <p class="element__name"></p>
+                        <button type="button" class="element__like"></button>
                     </div>
                 </div>
-                <button type="button" class="profile__add-button">
-                    <img class="profile__addVector" src="images/profile__addVector.svg" alt="кнопка добавления">
-                </button>
-            </section>
-            <section class="elements">
-                <template id="card-template">
-                    <div class="element">
-                        <img src="" alt="" class="element__image">
-                        <button type="button" class="element__delete-card"></button>
-                        <div class="element__group">
-                            <p class="element__name"></p>
-                            <button type="button" class="element__like"></button>
-                        </div>
-                    </div>
-                </template>
-            </section>
-        </main>
-        <footer class="footer">
-            <p class="footer__copyrights">&copy; 2020 Mesto Russia</p>
-        </footer>
+            </template>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyrights">&copy; 2020 Mesto Russia</p>
+    </footer>
+</div>
+<div class="popup" id="edit">
+    <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form" name="editForm">
+            <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="editFormName" required maxlength="20">
+            <input type="text" placeholder="О себе" class="popup__input popup__input_type_description" name="editFormDescription" required maxlength="30">
+            <button type="submit" class="popup__button">Сохранить</button>
+        </form>
     </div>
-    <div class="popup" id="popup__profile">
-        <div class="popup__container">
-            <button class="popup__close" type="button"></button>
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <form class="popup__form" name="editForm">
-                <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="editFormName" required maxlength="20">
-                <input type="text" placeholder="О себе" class="popup__input popup__input_type_description" name="editFormDescription" required maxlength="30">
-                <button type="submit" class="popup__button">Сохранить</button>
-            </form>
-        </div>
-    </div>
+</div>
 
-    <div class="popup" id="popup-element">
-        <div class="popup__container">
-            <button class="popup__close" type="button"></button>
-            <h3 class="popup__title">Новое место</h3>
-            <form class="popup-element__form" action="#" method="POST" name="elementInfo">
-                <input type="text" placeholder="Название" class="popup__input popup__input_type_element" required maxlength="30">
-                <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_url" required>
-                <button type="submit" class="popup__button">Создать</button>
-            </form>
-        </div>
+<div class="popup" id="place">
+    <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" action="#" method="POST" name="elementInfo">
+            <input type="text" placeholder="Название" class="popup__input popup__input_type_element" required maxlength="30">
+            <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_url" required>
+            <button type="submit" class="popup__button">Создать</button>
+        </form>
     </div>
+</div>
 
-    <div class="popup-image popup">
-        <div class="popup-image__container">
-            <button class="popup-image__close" type="button"></button>
-            <img src="" alt="" class="popup-image__image">
-            <p class="popup-image__text"></p>
-        </div>
+<div class="popup-image popup" id="image">
+    <div class="popup-image__container">
+        <button class="popup__close" type="button"></button>
+        <img src="" alt="" class="popup-image__image">
+        <p class="popup-image__text"></p>
     </div>
-
-    <script src="scripts/initial-сards.js"></script>
-    <script src="./scripts/script.js"></script>
+</div>
+<script src="./scripts/initial-сards.js"></script>
+<script src="./scripts/script.js"></script>
 </body>
 </html>
