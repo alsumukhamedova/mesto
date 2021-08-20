@@ -49,10 +49,12 @@
     <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="editForm">
-            <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="editFormName" required maxlength="20">
-            <input type="text" placeholder="О себе" class="popup__input popup__input_type_description" name="editFormDescription" required maxlength="30">
-            <button type="submit" class="popup__button">Сохранить</button>
+        <form class="popup__form form" name="editForm" action="#" method="POST" novalidate>
+            <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="editFormName" required pattern="[a-zA-Zа-яА-Я\s\-]+" minlength="2" maxlength="40" id="name-input">
+            <span class="popup__input-error" id="name-input-error"></span>
+            <input type="text" placeholder="О себе" class="popup__input popup__input_type_description" name="editFormDescription" required minlength="2" maxlength="200" id="description-input">
+            <span class="popup__input-error" id="description-input-error"></span>
+            <button type="submit" class="button button__elem popup__button">Сохранить</button>
         </form>
     </div>
 </div>
@@ -61,10 +63,12 @@
     <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" action="#" method="POST" name="elementInfo">
-            <input type="text" placeholder="Название" class="popup__input popup__input_type_element" required maxlength="30">
-            <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_url" required>
-            <button type="submit" class="popup__button">Создать</button>
+        <form class="popup__form form" action="#" method="POST" name="elementInfo" novalidate>
+            <input type="text" name="place" placeholder="Название" class="popup__input popup__input_type_element" required minlength="1" maxlength="30" id="place-input">
+            <span class="popup__input-error" id="element-input-error"></span>
+            <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_url" required id="url-input">
+            <span class="popup__input-error" id="url-input-error"></span>
+            <button type="submit" class="button button__elem popup__button">Создать</button>
         </form>
     </div>
 </div>
