@@ -54,8 +54,8 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add('popup__button_disabled');
+        buttonElement.setAttribute("disabled", "disabled");
     } else {
-        buttonElement.classList.remove('popup__button_disabled');
+        buttonElement.removeAttribute("disabled");
     }
 }
