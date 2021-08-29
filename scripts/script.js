@@ -1,7 +1,7 @@
 // Создание карточек
 function createCard(cardData) {
     const cardTemplate = document.querySelector('#card-template').content;
-    const cardElement = cardTemplate.cloneNode(true);
+    const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
     cardElement.querySelector('.element__name').textContent = cardData.name;
     cardElement.querySelector('.element__image').src = cardData.link;
     cardElement.querySelector('.element__image').alt = cardData.name;
