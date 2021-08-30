@@ -31,11 +31,10 @@ addTemplateCard();
 
 // Увеличение элемента
 function handleImageClick(event) {
-    popupImage.classList.add('popup_opened');
+    openPopup(popupImage);
     popupImageImage.src = event.target.src;
     popupImageImage.alt = event.target.name;
     popupImageText.textContent = event.target.parentNode.textContent;
-    document.addEventListener('keydown', closeEsc);
 }
 
 // Сохранение значений из popup-ов при нажатии на "сохранить"
