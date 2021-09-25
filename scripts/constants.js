@@ -26,3 +26,18 @@ const descriptionInput = editForm.elements.editFormDescription;
 const placeForm = document.forms.elementInfo;
 const name = placeForm.elements.place;
 const link = placeForm.elements.link;
+
+const profileValidation = new FormValidator(config, editForm);
+const cardValidation = new FormValidator(config, placeForm);
+
+profileValidation.enableValidation();
+cardValidation.enableValidation();
+
+const config = {
+    formElement: '.form',
+    inputElement: '.popup__input',
+    buttonElement: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+};

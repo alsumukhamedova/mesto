@@ -1,25 +1,28 @@
+import { Card } from './Card';
+import { FormValidator } from './FormValidator';
+
 // Создание карточек
-function createCard(cardData) {
-    const cardTemplate = document.querySelector('#card-template').content;
-    const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-    cardElement.querySelector('.element__name').textContent = cardData.name;
-    cardElement.querySelector('.element__image').src = cardData.link;
-    cardElement.querySelector('.element__image').alt = cardData.name;
-    cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('element__like_active');
-    });
-
-    cardElement.querySelector('.element__delete-card').addEventListener('click', function () {
-        cardElement.remove();
-    });
-
-    cardElement.querySelector('.element__image').addEventListener('click', handleImageClick);
-    return cardElement;
-}
+// function createCard(cardData) {
+//     const cardTemplate = document.querySelector('#card-template').content;
+//     const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+//     cardElement.querySelector('.element__name').textContent = cardData.name;
+//     cardElement.querySelector('.element__image').src = cardData.link;
+//     cardElement.querySelector('.element__image').alt = cardData.name;
+//     cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
+//         evt.target.classList.toggle('element__like_active');
+//     });
+//
+//     cardElement.querySelector('.element__delete-card').addEventListener('click', function () {
+//         cardElement.remove();
+//     });
+//
+//     cardElement.querySelector('.element__image').addEventListener('click', handleImageClick);
+//     return cardElement;
+// }
 
 function renderCard(name, link) {
     const cardData = {'name': name, 'link': link};
-    cardsContainer.prepend(createCard(cardData));
+    cardsContainer.prepend(Card(cardData));
 }
 
 // Добавление готовых карточек
@@ -107,6 +110,7 @@ function closeOverlay(evt) {
     if (evt.target.classList.contains('popup')) {
         closePopup(evt.target.closest('.popup'));}
 }
+
 
 editButton.addEventListener('click', function () {
     fillFields();
