@@ -24,14 +24,6 @@ export class Card {
         const buttonLike = this._element.querySelector('.element__like');
         buttonLike.classList.toggle('element__like_active');
     }
-    _openCard() {
-        const popupImage = document.querySelector('.popup-image');
-        const popupImageImage = document.querySelector('.popup-image__image');
-        const popupImageText = document.querySelector('.popup-image__text');
-        popupImageImage.src = this._link;
-        popupImageImage.alt = this._name;
-        popupImageText.textContent = this._name;
-    }
     _setEventListeners() {
         this._element.querySelector('.element__like').addEventListener('click', () => {
             this._likeCard()

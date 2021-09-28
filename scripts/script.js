@@ -26,11 +26,11 @@ function renderCard(name, link) {
 }
 
 // Добавление готовых карточек
-function addTemplateCard() {
+function renderInitialCards() {
     initialCards.forEach((card) => renderCard(card.name, card.link))
 }
 
-addTemplateCard();
+renderInitialCards();
 
 // Увеличение элемента
 function handleImageClick(event) {
@@ -41,7 +41,7 @@ function handleImageClick(event) {
 }
 
 // Сохранение значений из popup-ов при нажатии на "сохранить"
-function addInfo(evt) {
+function submitProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;
@@ -84,12 +84,12 @@ function closePlacePopup() {
 }
 
 // Закрытие элемента
-function imageClose() {
+function closeImagePopup() {
     closePopup(popupImage)
 }
 
 // Заполнение полей формы при открытии
-function fillFields() {
+function fillProfileFields() {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
     // чтобы кнопка была активной при открытии попапа при валидных полях
@@ -111,9 +111,18 @@ function closeOverlay(evt) {
         closePopup(evt.target.closest('.popup'));}
 }
 
+function cardSelector(name, link) {
+    const popupImage = document.querySelector('.popup-image');
+    const popupImageImage = document.querySelector('.popup-image__image');
+    const popupImageText = document.querySelector('.popup-image__text');
+    popupImageImage.src = this._link;
+    popupImageImage.alt = this._name;
+    popupImageText.textContent = this._name;
+}
+new Card(data, cardSelector);
 
 editButton.addEventListener('click', function () {
-    fillFields();
+    fillProfileFields();
     openPopup(popupProfile);
 })
 
@@ -123,7 +132,7 @@ popupProfileClose.addEventListener('click', function () {
 });
 
 addButton.addEventListener('click', function () {
-    fillFields();
+    fillProfileFields();
     openPopup(popupPlace);
 })
 
@@ -153,5 +162,5 @@ addButton.addEventListener('click', openPlacePopup);
 editButton.addEventListener('click', openEditPopup);
 popupPlaceClose.addEventListener('click', closePlacePopup);
 popupProfileClose.addEventListener('click', closeProfilePopup);
-profileForm.addEventListener('submit', addInfo);
-popupImageClose.addEventListener('click', imageClose);
+profileForm.addEventListener('submit', submitProfileForm);
+popupImageClose.addEventListener('click', closeImagePopup);
