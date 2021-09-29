@@ -1,3 +1,5 @@
+import {FormValidator} from "./FormValidator";
+
 const content = document.querySelector('.content');
 const cardsContainer = content.querySelector('.elements');
 const profile = document.querySelector('.profile');
@@ -41,3 +43,4 @@ const config = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_active'
 };
+export {popupImage, popupImageText, popupImageImage}

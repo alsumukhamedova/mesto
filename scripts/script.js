@@ -1,5 +1,6 @@
 import { Card } from './Card';
 import { FormValidator } from './FormValidator';
+import {popupImage} from "./constants";
 
 // Создание карточек
 // function createCard(cardData) {
@@ -33,12 +34,12 @@ function renderInitialCards() {
 renderInitialCards();
 
 // Увеличение элемента
-function handleImageClick(event) {
-    openPopup(popupImage);
-    popupImageImage.src = event.target.src;
-    popupImageImage.alt = event.target.name;
-    popupImageText.textContent = event.target.parentNode.textContent;
-}
+// function handleImageClick(event) {
+//     openPopup(popupImage);
+//     popupImageImage.src = event.target.src;
+//     popupImageImage.alt = event.target.name;
+//     popupImageText.textContent = event.target.parentNode.textContent;
+// }
 
 // Сохранение значений из popup-ов при нажатии на "сохранить"
 function submitProfileForm(evt) {
@@ -119,7 +120,6 @@ function cardSelector(name, link) {
     popupImageImage.alt = this._name;
     popupImageText.textContent = this._name;
 }
-new Card(data, cardSelector);
 
 editButton.addEventListener('click', function () {
     fillProfileFields();
@@ -164,3 +164,4 @@ popupPlaceClose.addEventListener('click', closePlacePopup);
 popupProfileClose.addEventListener('click', closeProfilePopup);
 profileForm.addEventListener('submit', submitProfileForm);
 popupImageClose.addEventListener('click', closeImagePopup);
+export {openPopup}
