@@ -1,41 +1,35 @@
-import {FormValidator} from "./FormValidator";
+import {FormValidator} from "./FormValidator.js";
 
-const content = document.querySelector('.content');
-const cardsContainer = content.querySelector('.elements');
-const profile = document.querySelector('.profile');
+export const content = document.querySelector('.content');
+export const cardsContainer = content.querySelector('.elements');
+export const profile = document.querySelector('.profile');
 
-const addButton = profile.querySelector('.profile__add-button');
-const editButton = profile.querySelector('.profile__edit-button');
+export const addButton = profile.querySelector('.profile__add-button');
+export const editButton = profile.querySelector('.profile__edit-button');
 
-const popupProfile = document.querySelector('#edit')
-const popupPlace = document.querySelector('#place')
-const popupImage = document.querySelector('.popup-image');
+export const popupProfile = document.querySelector('#edit')
+export const popupPlace = document.querySelector('#place')
+export const popupImage = document.querySelector('.popup-image');
 
-const popupProfileClose = popupProfile.querySelector('.popup__close')
-const popupPlaceClose = popupPlace.querySelector('.popup__close')
-const popupImageClose = popupImage.querySelector('.popup__close')
+export const popupProfileClose = popupProfile.querySelector('.popup__close')
+export const popupPlaceClose = popupPlace.querySelector('.popup__close')
+export const popupImageClose = popupImage.querySelector('.popup__close')
 
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
-const popupImageImage = document.querySelector('.popup-image__image');
-const popupImageText = document.querySelector('.popup-image__text');
-const profileForm = popupProfile.querySelector('.popup__form');
+export const profileName = document.querySelector('.profile__name');
+export const profileDescription = document.querySelector('.profile__description');
+export const popupImageImage = document.querySelector('.popup-image__image');
+export const popupImageText = document.querySelector('.popup-image__text');
+export const profileForm = popupProfile.querySelector('.popup__form');
 
-const editForm = document.forms.editForm;
-const nameInput = editForm.elements.editFormName;
-const descriptionInput = editForm.elements.editFormDescription;
+export const editForm = document.forms.editForm;
+export const nameInput = editForm.elements.editFormName;
+export const descriptionInput = editForm.elements.editFormDescription;
 
-const placeForm = document.forms.elementInfo;
-const name = placeForm.elements.place;
-const link = placeForm.elements.link;
+export const placeForm = document.forms.elementInfo;
+export const name = placeForm.elements.place;
+export const link = placeForm.elements.link;
 
-const profileValidation = new FormValidator(config, editForm);
-const cardValidation = new FormValidator(config, placeForm);
-
-profileValidation.enableValidation();
-cardValidation.enableValidation();
-
-const config = {
+export const config = {
     formElement: '.form',
     inputElement: '.popup__input',
     buttonElement: '.popup__button',
@@ -43,4 +37,9 @@ const config = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_active'
 };
-export {popupImage, popupImageText, popupImageImage}
+
+export const profileValidation = new FormValidator(config, editForm);
+export const cardValidation = new FormValidator(config, placeForm);
+
+profileValidation.enableValidation();
+cardValidation.enableValidation();
