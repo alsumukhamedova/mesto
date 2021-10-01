@@ -1,5 +1,3 @@
-import {FormValidator} from "./FormValidator.js";
-
 export const content = document.querySelector('.content');
 export const cardsContainer = content.querySelector('.elements');
 export const profile = document.querySelector('.profile');
@@ -38,8 +36,3 @@ export const config = {
     errorClass: 'popup__input-error_active'
 };
 
-export const profileValidation = new FormValidator(config, editForm);
-export const cardValidation = new FormValidator(config, placeForm);
-
-profileValidation.enableValidation();
-cardValidation.enableValidation();
