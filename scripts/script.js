@@ -4,24 +4,24 @@ import {popupImage, cardsContainer, profileName, nameInput, profileDescription, 
     popupPlaceClose, name, link, editForm, popupImageClose, popupImageImage, popupImageText } from './constants.js';
 import { initialCards } from './initial-сards.js';
 
-function renderCard(name, link, cardSelector, handleImageClick) {
+function renderCard(name, link) {
     const card = new Card(name, link,  '#card-template', handleImageClick);
     cardsContainer.prepend(card.generateCard());
 }
 
 // Добавление готовых карточек
 function renderInitialCards() {
-    initialCards.forEach((card) => renderCard(card.name, card.link,  '#card-template', handleImageClick))
+    initialCards.forEach((card) => renderCard(card.name, card.link))
 }
 
 renderInitialCards();
 
 // Увеличение элемента
-function handleImageClick(event) {
+function handleImageClick(link, name) {
     openPopup(popupImage);
-    popupImageImage.src = event.target.src;
-    popupImageImage.alt = event.target.name;
-    popupImageText.textContent = event.target.parentNode.textContent;
+    popupImageImage.src = link;
+    popupImageImage.alt = name;
+    popupImageText.textContent = name;
 }
 
 // Сохранение значений из popup-ов при нажатии на "сохранить"
