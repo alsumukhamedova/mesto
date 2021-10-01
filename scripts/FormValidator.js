@@ -5,9 +5,8 @@ export class FormValidator {
         this._inputList = Array.from(this._form.querySelectorAll(this._config.inputElement));
         this._buttonElement = this._form.querySelector(this._config.buttonElement);
     }
-    _showInputError (inputElement, errorMessage){
+    _showInputError (inputElement){
         inputElement.classList.add(this._config.inputErrorClass);
-        inputElement.textContent = errorMessage;
         inputElement.classList.add(this._config.errorClass);}
 
     _hideInputError(inputElement){
