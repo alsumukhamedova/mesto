@@ -11,14 +11,6 @@ function setResetValidator(config, form) {
     newValidator.enableValidation();
 }
 
-function enableProfileValidation() {
-    setResetValidator(config, editForm);
-}
-function enableElementValidation() {
-    setResetValidator(config, placeForm);
-}
-
-
 function renderCard(name, link) {
     const card = new Card(name, link,  '#card-template', handleImageClick);
     cardsContainer.prepend(card.generateCard());
@@ -58,13 +50,13 @@ function openEditPopup() {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
     openPopup(popupProfile);
-    enableProfileValidation();
+    setResetValidator(config, editForm);
 }
 
 // Popup для добавления новых элементов
 function openPlacePopup() {
     openPopup(popupPlace);
-    enableElementValidation();
+    setResetValidator(config, placeForm);
 }
 
 // Закрывает переданный в функцию popup
