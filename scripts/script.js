@@ -5,11 +5,12 @@ import {popupImage, cardsContainer, profileName, nameInput, profileDescription, 
 import { initialCards } from './initial-сards.js';
 import { FormValidator } from "./FormValidator.js";
 
-function setResetValidator(config, form) {
-    const newValidator = new FormValidator(config, form);
-    newValidator.resetValidation();
-    newValidator.enableValidation();
-}
+const profileValidation = new FormValidator(config, editForm);
+const elementValidation = new FormValidator(config, placeForm);
+
+profileValidation.enableValidation();
+elementValidation.enableValidation();
+
 
 function renderCard(name, link) {
     const card = new Card(name, link,  '#card-template', handleImageClick);
@@ -50,13 +51,11 @@ function openEditPopup() {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
     openPopup(popupProfile);
-    setResetValidator(config, editForm);
 }
 
 // Popup для добавления новых элементов
 function openPlacePopup() {
     openPopup(popupPlace);
-    setResetValidator(config, placeForm);
 }
 
 // Закрывает переданный в функцию popup
