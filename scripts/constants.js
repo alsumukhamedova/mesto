@@ -20,7 +20,7 @@ export const popupImageText = document.querySelector('.popup-image__text');
 export const profileForm = popupProfile.querySelector('.popup__form');
 
 export const editForm = document.forms.editForm;
-export const nameInput = editForm.elements.editFormName;
+export const nameInput = editForm.elements.userInfo;
 export const descriptionInput = editForm.elements.editFormDescription;
 
 export const placeForm = document.forms.elementInfo;
