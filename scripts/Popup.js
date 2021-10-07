@@ -1,30 +1,46 @@
 export class Popup {
-    constructor(popup) {
-        this._popup = popup;
-        this._closeEsc = this._closeEsc.bind(this)
-    }
-    setEventListeners() {
-        this._popup.addEventListener('click', (e) => {
-            if (e.target.classList.contains('popup_opened') || e.target.classList.contains('popup__button-close')) {
-                this.closePopup()
-            }
-        });
+    constructor(popupSelector) {
+        this._popup = popupSelector;
+        this._closeButton = this._popup.querySelector('.button_type_close');
+        this._handleEscClose = this._handleEscClose.bind(this);
+        this._handleOverlayClose = this._handleOverlayClose.bind(this);
     };
 
-    openPopup() {
+    open() {
         this._popup.classList.add('popup_opened');
-        document.addEventListener('keydown', this._closeEsc);
+        this._setEventListeners();
     };
 
-    closePopup() {
+    close() {
         this._popup.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._closeEsc);
+        this._removeEventListeners();
     };
 
-    _closeEsc(evt) {
-        const popupOpened = document.querySelector('.popup_opened');
-        if (evt.keyCode === 27 && popupOpened) {
-            this.closePopup();
+    _handleEscClose = (evt) => {
+        if (evt.key === 'Escape') {
+            this.close();
         }
+    };
+
+    _handleOverlayClose = (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            this.close();
+        }
+    };
+
+    _handleButtonClose = () => {
+        this.close();
+    };
+
+    _setEventListeners() {
+        document.addEventListener('keydown', this._handleEscClose);
+        this._popup.addEventListener('mousedown', this._handleOverlayClose);
+        this._closeButton.addEventListener('click', this._handleButtonClose);
+    };
+
+    _removeEventListeners() {
+        document.removeEventListener('keydown', this._handleEscClose);
+        this._popup.removeEventListener('mousedown', this._handleOverlayClose);
+        this._closeButton.removeEventListener('click', this._handleButtonClose);
     };
 }

@@ -1,23 +1,15 @@
 export class Section {
-    constructor({ elements, renderer }, containerSelector) {
-        this._elements = elements;
+    constructor({ items, renderer }, containerSelector) {
+        this._items = items;
         this._renderer = renderer;
-        this._cardsContainer = document.querySelector(containerSelector)
-    };
-
-//  добавляем элемент в контейнер
-    prependElement(element) {
-        this._cardsContainer.prepend(element.generateCard());
-    };
-
-    clear() {
-        this._cardsContainer.innerHTML = '';
+        this._container = containerSelector;
     };
 
     renderItems() {
-        this.clear()
-        this._elements.forEach(element => {
-            this._renderer(element);
-        });
+        this._items.forEach(item => this._renderer(item))
     };
+
+    addItem(item) {
+        this._container.prepend(item)
+    }
 }
