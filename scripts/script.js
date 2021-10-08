@@ -55,8 +55,8 @@ const userInfo = new UserInfo (profileName, profileDescription);
 
 const popupFormProfile = new PopupWithForm({
     popupSelector: popupProfile,
-    handleFormSubmit: (name, description) => {
-        userInfo.setUserInfo(name, description)
+    handleFormSubmit: (info) => {
+        userInfo.setUserInfo(info.name, info.description)
     }
     })
 // // Сохранение значений из popup-ов при нажатии на "сохранить"
@@ -137,19 +137,19 @@ addButton.addEventListener('click', function () {
 popupPlaceClose.addEventListener('click', function () {
     popupFormCard.close()
 });
-// placeForm.addEventListener('submit', function (evt) {
-//     evt.preventDefault();
-//     renderCard(name.value, link.value);
-//     closePopup(popupPlace);
-//     placeForm.reset();
-// })
-// editForm.addEventListener('submit', function (evt) {
-//     evt.preventDefault();
-//     profileName.textContent = nameInput.value;
-//     profileDescription.textContent = descriptionInput.value;
-//     closePopup(popupProfile);
-//     placeForm.reset();
-// })
+placeForm.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    renderCard(name.value, link.value);
+    closePopup(popupPlace);
+    placeForm.reset();
+})
+editForm.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileDescription.textContent = descriptionInput.value;
+    popupProfile.close();
+    placeForm.reset();
+})
 
 // document.addEventListener('click', closeOverlay)
 // addButton.addEventListener('click', openPlacePopup);
