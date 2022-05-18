@@ -1,4 +1,4 @@
-import {popupImage, popupImageText} from './constants.js';
+import {popupImageImage, popupImageText} from './constants.js';
 import { Popup } from './Popup.js';
 
 export class PopupWithImage extends Popup {
@@ -7,8 +7,8 @@ export class PopupWithImage extends Popup {
     };
 
     open(link, name) {
-        popupImage.src = link;
-        popupImage.alt = name;
+        popupImageImage.src = link;
+        popupImageImage.alt = name;
         popupImageText.textContent = name;
         super.open();
     };
