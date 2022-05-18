@@ -7,11 +7,10 @@ export class FormValidator {
     }
     _showInputError (inputElement){
         inputElement.classList.add(this._config.inputErrorClass);
-        inputElement.classList.add(this._config.errorClass);}
+    }
 
     _hideInputError(inputElement){
         inputElement.classList.remove(this._config.inputErrorClass);
-        inputElement.classList.remove(this._config.errorClass);
         inputElement.textContent = '';
     };
     _checkInputValidity(inputElement) {
@@ -47,14 +46,4 @@ export class FormValidator {
         });
         this._setEventListeners();
     };
-    resetValidation() {
-        this._inputList.forEach((item) => {
-            item.classList.remove(this._config.inputErrorClass)
-        });
-        this._buttonElement.classList.add(this._config.inactiveButtonClass);
-        this._buttonElement.setAttribute("disabled", "disabled");
-        this._form.querySelectorAll('.popup__input_type_error').forEach((item) => {
-            item.classList.remove(this._config.errorClass)
-        });
-    }
 }

@@ -2,11 +2,10 @@ import '../src/pages/index.css';
 import { Card } from './components/Card';
 import {popupImage, cardsContainer, profileName, nameInput, profileDescription, descriptionInput,
     popupProfile, popupPlace, profileForm, placeForm, editButton, popupProfileClose, addButton,
-    popupPlaceClose, name, link, editForm, popupImageClose, popupImageImage, popupImageText, config } from './components/constants';
+    popupPlaceClose, editForm, popupImageImage, popupImageText, config } from './components/constants';
 import { initialCards } from './components/initial-сards.js';
 import { FormValidator } from "./components/FormValidator.js";
 import { Section } from './components/Section.js';
-import { Popup } from './components/Popup.js';
 import { PopupWithForm } from './components/PopupWithForm.js';
 import { UserInfo } from './components/UserInfo.js';
 import { PopupWithImage } from "./components/PopupWithImage.js";
@@ -26,15 +25,7 @@ const cardList = new Section ({
 }}, cardsContainer)
 cardList.renderItems();
 
-// function renderCard(name, link) {
-//     const card = new Card(name, link,  '#card-template', handleImageClick);
-//     cardsContainer.prepend(card.generateCard());
-// }
-// Добавление готовых карточек
-// function renderInitialCards() {
-//     initialCards.forEach((card) => renderCard(card.name, card.link))
-// }
-// renderInitialCards();
+
 const popupImageBig = new PopupWithImage(popupImage);
 // Увеличение элемента
 function handleImageClick(name, link) {
@@ -46,7 +37,7 @@ function handleImageClick(name, link) {
 const popupFormCard = new PopupWithForm({
     popupSelector: popupPlace,
     handleFormSubmit: (item) => {
-        const card = new Card(name, link,  '#card-template', handleImageClick);
+        const card = new Card(item.place, item.link,  '#card-template', handleImageClick);
         const cardElement = card.generateCard();
         cardList.addItem(cardElement);
     }
@@ -57,50 +48,10 @@ const userInfo = new UserInfo (profileName, profileDescription);
 const popupFormProfile = new PopupWithForm({
     popupSelector: popupProfile,
     handleFormSubmit: (info) => {
-        userInfo.setUserInfo(info.name, info.description)
+        userInfo.setUserInfo(info.userInfo, info.editFormDescription)
     }
     })
-// // Сохранение значений из popup-ов при нажатии на "сохранить"
-// function submitProfileForm(evt) {
-//     evt.preventDefault();
-//     profileName.textContent = nameInput.value;
-//     profileDescription.textContent = descriptionInput.value;
-//     closeProfilePopup()
-// }
-// открывает любой popup
-// function openPopup(popup) {
-//     popup.classList.add('popup_opened');
-//     document.addEventListener('keydown', closeEsc);
-// }
-// открывает редактирование профиля
-// function openEditPopup() {
-//     nameInput.value = profileName.textContent;
-//     descriptionInput.value = profileDescription.textContent;
-//     openPopup(popupProfile);
-// }
-// // Popup для добавления новых элементов
-// function openPlacePopup() {
-//     openPopup(popupPlace);
-// }
 
-// Закрывает переданный в функцию popup
-// function closePopup(popup) {
-//     popup.classList.remove('popup_opened');
-//     document.removeEventListener('keydown', closeEsc);
-// }
-// Закрывает popup редактирования профиля
-// function closeProfilePopup() {
-//     profileForm.reset()
-//     closePopup(popupProfile);
-// }
-// function closePlacePopup() {
-//     placeForm.reset()
-//     closePopup(popupPlace)
-// }
-// // Закрытие элемента
-// function closeImagePopup() {
-//     closePopup(popupImage)
-// }
 // Заполнение полей формы при открытии
 function fillProfileFields() {
     nameInput.value = profileName.textContent;
@@ -110,20 +61,10 @@ function fillProfileFields() {
     nameInput.dispatchEvent(event);
     descriptionInput.dispatchEvent(event);
 }
-// function closeEsc(evt) {
-//     const popupOpened = document.querySelector('.popup_opened');
-//     if (evt.keyCode === 27 && popupOpened) {
-//         closePopup(popupOpened);
-//     }
-// }
-// // закрывает кликом по фону
-// function closeOverlay(evt) {
-//     if (evt.target.classList.contains('popup')) {
-//         closePopup(evt.target.closest('.popup'));}
-// }
+
 editButton.addEventListener('click', function () {
     fillProfileFields();
-    const userData = userInfo.getUserInfo();
+    userInfo.getUserInfo();
     popupFormProfile.open();
 })
 popupProfileClose.addEventListener('click', function () {
@@ -138,24 +79,4 @@ addButton.addEventListener('click', function () {
 popupPlaceClose.addEventListener('click', function () {
     popupFormCard.close()
 });
-placeForm.addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    renderCard(name.value, link.value);
-    closePopup(popupPlace);
-    placeForm.reset();
-})
-editForm.addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileDescription.textContent = descriptionInput.value;
-    popupProfile.close();
-    placeForm.reset();
-})
 
-// document.addEventListener('click', closeOverlay)
-// addButton.addEventListener('click', openPlacePopup);
-// editButton.addEventListener('click', openEditPopup);
-// popupPlaceClose.addEventListener('click', closePlacePopup);
-// popupProfileClose.addEventListener('click', closeProfilePopup);
-// profileForm.addEventListener('submit', submitProfileForm);
-// popupImageClose.addEventListener('click', closeImagePopup);
