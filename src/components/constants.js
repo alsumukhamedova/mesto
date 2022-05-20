@@ -18,6 +18,8 @@ export const profileDescription = document.querySelector('.profile__description'
 export const popupImageImage = document.querySelector('.popup-image__image');
 export const popupImageText = document.querySelector('.popup-image__text');
 export const profileForm = popupProfile.querySelector('.popup__form');
+export const inputTypeUserInfo = document.querySelector('.popup__input_type_userInfo');
+export const inputTypeDescription = document.querySelector('.popup__input_type_editFormDescription');
 
 export const editForm = document.forms.editForm;
 export const nameInput = editForm.elements.userInfo;
@@ -33,5 +35,6 @@ export const config = {
     buttonElement: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
 };
 

@@ -1,8 +1,10 @@
 import '../src/pages/index.css';
 import { Card } from './components/Card';
-import {popupImage, cardsContainer, profileName, nameInput, profileDescription, descriptionInput,
+import {
+    popupImage, cardsContainer, profileName, nameInput, profileDescription, descriptionInput,
     popupProfile, popupPlace, profileForm, placeForm, editButton, popupProfileClose, addButton,
-    popupPlaceClose, editForm, popupImageImage, popupImageText, config } from './components/constants';
+    popupPlaceClose, editForm, popupImageImage, popupImageText, config, inputTypeUserInfo, inputTypeDescription
+} from './components/constants';
 import { initialCards } from './components/initial-сards.js';
 import { FormValidator } from "./components/FormValidator.js";
 import { Section } from './components/Section.js';
@@ -63,8 +65,10 @@ function fillProfileFields() {
 }
 
 editButton.addEventListener('click', function () {
+    const {userName, userDescription} = userInfo.getUserInfo();
+    inputTypeUserInfo.value = userName;
+    inputTypeDescription.value = userDescription;
     fillProfileFields();
-    userInfo.getUserInfo();
     popupFormProfile.open();
 })
 popupProfileClose.addEventListener('click', function () {
@@ -73,10 +77,11 @@ popupProfileClose.addEventListener('click', function () {
 });
 addButton.addEventListener('click', function () {
     fillProfileFields();
-    popupFormCard.open()
-})
+    popupFormCard.open();
+    elementValidation.toggleButtonState();
+});
+
 // Закрывает popup добавления места
 popupPlaceClose.addEventListener('click', function () {
     popupFormCard.close()
 });
-

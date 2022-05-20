@@ -1,11 +1,21 @@
 .popup__form {
-    margin: 54px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+    margin: 34px auto 45px;
+    width: 358px;
+    height: 260px;
+    background-color: white;
+    border-radius: 10px;
     font-family: 'Inter', sans-serif;
-    max-width: 358px;
+    /*margin: 40px 0 0;*/
+    /*font-family: 'Inter', sans-serif;*/
+    /*max-width: 358px;*/
 }
 
 @media screen and (max-width: 550px) {
     .popup__form{
-        margin-top: 75px;
+        width: 238px;
     }
 }
