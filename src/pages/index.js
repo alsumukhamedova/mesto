@@ -1,16 +1,16 @@
-import '../src/pages/index.css';
-import { Card } from './components/Card';
+import './index.css';
+import { Card } from '../components/Card.js';
 import {
     popupImage, cardsContainer, profileName, nameInput, profileDescription, descriptionInput,
     popupProfile, popupPlace, profileForm, placeForm, editButton, popupProfileClose, addButton,
     popupPlaceClose, editForm, popupImageImage, popupImageText, config, inputTypeUserInfo, inputTypeDescription
-} from './components/constants';
-import { initialCards } from './components/initial-сards.js';
-import { FormValidator } from "./components/FormValidator.js";
-import { Section } from './components/Section.js';
-import { PopupWithForm } from './components/PopupWithForm.js';
-import { UserInfo } from './components/UserInfo.js';
-import { PopupWithImage } from "./components/PopupWithImage.js";
+} from '../utils/constants.js';
+import { initialCards } from '../utils/constants.js';
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from '../components/Section.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
+import { PopupWithImage } from "../components/PopupWithImage.js";
 
 const profileValidation = new FormValidator(config, editForm);
 const elementValidation = new FormValidator(config, placeForm);
@@ -58,10 +58,6 @@ const popupFormProfile = new PopupWithForm({
 function fillProfileFields() {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
-    // чтобы кнопка была активной при открытии попапа при валидных полях
-    const event = new Event('input');
-    nameInput.dispatchEvent(event);
-    descriptionInput.dispatchEvent(event);
 }
 
 editButton.addEventListener('click', function () {
@@ -73,7 +69,6 @@ editButton.addEventListener('click', function () {
 })
 popupProfileClose.addEventListener('click', function () {
     popupFormProfile.close();
-    profileForm.reset();
 });
 addButton.addEventListener('click', function () {
     fillProfileFields();
