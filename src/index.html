@@ -63,7 +63,7 @@
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form form" action="#" method="POST" name="elementInfo" novalidate>
-            <input type="text" name="place" placeholder="Название" class="popup__input popup__input_type_place" required minlength="1" maxlength="30" id="place-input">
+            <input type="text" name="place" placeholder="Название" class="popup__input popup__input_type_place" required minlength="2" maxlength="30" id="place-input">
             <span class="popup__input-error place-input-error"></span>
             <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" required id="url-input">
             <span class="popup__input-error url-input-error"></span>
@@ -79,11 +79,5 @@
         <p class="popup-image__text"></p>
     </div>
 </div>
-
-<script type="module" src="src/components/PopupWithForm.js"></script>
-<script type="module" src="src/components/PopupWithImage.js"></script>
-<script type="module" src="src/components/Section.js"></script>
-<script type="module" src="src/pages/index.js"></script>
-<script type="module" src="src/utils/constants.js"></script>
 </body>
 </html>

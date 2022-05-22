@@ -1,3 +1,6 @@
 .popup__input-error{
-    display: none;
+    height: 13px;
+    padding: 5px 6px 13px;
+    line-height: 15px;
+    box-sizing: border-box;
 }
