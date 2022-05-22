@@ -8,13 +8,10 @@ export class Popup {
 
     open() {
         this._popup.classList.add('popup_opened');
-        this._setEventListeners();
-
     };
 
     close() {
         this._popup.classList.remove('popup_opened');
-        this._removeEventListeners();
     };
 
     _handleEscClose = (evt) => {
@@ -33,11 +30,5 @@ export class Popup {
         document.addEventListener('keydown', this._handleEscClose);
         this._popup.addEventListener('mousedown', this._handleOverlayClose);
         this._closeButton.addEventListener('click', () => this.close());
-    };
-
-    _removeEventListeners() {
-        document.removeEventListener('keydown', this._handleEscClose);
-        this._popup.removeEventListener('mousedown', this._handleOverlayClose);
-        this._closeButton.removeEventListener('click', () => this.close());
     };
 }
