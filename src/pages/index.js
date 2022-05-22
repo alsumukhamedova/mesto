@@ -2,7 +2,7 @@ import './index.css';
 import { Card } from '../components/Card.js';
 import {
     popupImage, cardsContainer, profileName, nameInput, profileDescription, descriptionInput,
-    popupProfile, popupPlace, profileForm, placeForm, editButton, popupProfileClose, addButton,
+    popupProfile, popupPlace, placeForm, editButton, popupProfileClose, addButton,
     popupPlaceClose, editForm, popupImageImage, popupImageText, config, inputTypeUserInfo, inputTypeDescription
 } from '../utils/constants.js';
 import { initialCards } from '../utils/constants.js';
@@ -18,30 +18,30 @@ const elementValidation = new FormValidator(config, placeForm);
 profileValidation.enableValidation();
 elementValidation.enableValidation();
 
+function createCard(title, image) {
+    const card = new Card(title, image, '#card-template', (name, link) => {
+        popupImageImage.alt = name;
+        popupImageText.textContent = name;
+        popupImageImage.src = link;
+        popupImageBig.open(name, link);
+    });
+    return card.generateCard();
+}
+
 const cardList = new Section ({
     items: initialCards,
     renderer: (item) => {
-        const card = new Card(item.name, item.link,  '#card-template', handleImageClick);
-        const cardElement = card.generateCard();
-        cardList.addItem(cardElement);
+        cardList.addItem(createCard(item.name, item.link));
 }}, cardsContainer)
 cardList.renderItems();
 
 
 const popupImageBig = new PopupWithImage(popupImage);
-// Увеличение элемента
-function handleImageClick(name, link) {
-    popupImageImage.alt = name;
-    popupImageText.textContent = name;
-    popupImageImage.src = link;
-    popupImageBig.open(name, link);
-}
+
 const popupFormCard = new PopupWithForm({
     popupSelector: popupPlace,
     handleFormSubmit: (item) => {
-        const card = new Card(item.place, item.link,  '#card-template', handleImageClick);
-        const cardElement = card.generateCard();
-        cardList.addItem(cardElement);
+        cardList.addItem(createCard(item.place, item.link));
     }
     });
 
