@@ -7,6 +7,7 @@
     font-size: 14px;
     line-height: 17px;
     transition: all .5s;
+    cursor: pointer;
 }
 .popup__input:focus {
     outline: none;
