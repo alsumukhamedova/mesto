@@ -18,32 +18,43 @@ const elementValidation = new FormValidator(config, placeForm);
 profileValidation.enableValidation();
 elementValidation.enableValidation();
 
-function createCard(title, image) {
-    const card = new Card(title, image, '#card-template', (name, link) => {
-        popupImageImage.alt = name;
-        popupImageText.textContent = name;
-        popupImageImage.src = link;
-        popupImageBig.open(name, link);
-    });
+const createNewCard = (data) => {
+    const card = new Card({
+        name: data.name, link: data.link,
+        handleImageClick: () => {
+            popupImageBig.open(data);
+        }
+    }, '#card-template');
     return card.generateCard();
 }
+
+// function createCard(title, image) {
+//     const card = new Card(title, image, '#card-template', (name, link) => {
+//         popupImageImage.alt = name;
+//         popupImageText.textContent = name;
+//         popupImageImage.src = link;
+//         popupImageBig.open(name, link);
+//     });
+//     return card.generateCard();
+// }
 
 const cardList = new Section ({
     items: initialCards,
     renderer: (item) => {
-        cardList.addItem(createCard(item.name, item.link));
+        cardList.addItem(createNewCard(item));
 }}, cardsContainer)
 cardList.renderItems();
 
-
 const popupImageBig = new PopupWithImage(popupImage);
+popupImageBig._setEventListeners();
 
 const popupFormCard = new PopupWithForm({
     popupSelector: popupPlace,
     handleFormSubmit: (item) => {
-        cardList.addItem(createCard(item.place, item.link));
+        cardList.addItem(createNewCard({name: item.place, link: item.link}));
     }
     });
+popupFormCard.setEventListeners();
 
 const userInfo = new UserInfo (profileName, profileDescription);
 
@@ -53,6 +64,7 @@ const popupFormProfile = new PopupWithForm({
         userInfo.setUserInfo(info.userInfo, info.editFormDescription)
     }
     })
+popupFormProfile.setEventListeners();
 
 // Заполнение полей формы при открытии
 function fillProfileFields() {
