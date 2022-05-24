@@ -28,8 +28,7 @@ export class Popup {
         }
     };
 
-    _setEventListeners() {
-        document.addEventListener('keydown', this._handleEscClose);
+    setEventListeners() {
         this._popup.addEventListener('mousedown', this._handleOverlayClose);
         this._closeButton.addEventListener('click', () => this.close());
     };

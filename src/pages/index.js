@@ -3,7 +3,7 @@ import { Card } from '../components/Card.js';
 import {
     popupImage, cardsContainer, profileName, nameInput, profileDescription, descriptionInput,
     popupProfile, popupPlace, placeForm, editButton, popupProfileClose, addButton,
-    popupPlaceClose, editForm, popupImageImage, popupImageText, config, inputTypeUserInfo, inputTypeDescription
+    popupPlaceClose, editForm, config, inputTypeUserInfo, inputTypeDescription
 } from '../utils/constants.js';
 import { initialCards } from '../utils/constants.js';
 import { FormValidator } from "../components/FormValidator.js";
@@ -28,16 +28,6 @@ const createNewCard = (data) => {
     return card.generateCard();
 }
 
-// function createCard(title, image) {
-//     const card = new Card(title, image, '#card-template', (name, link) => {
-//         popupImageImage.alt = name;
-//         popupImageText.textContent = name;
-//         popupImageImage.src = link;
-//         popupImageBig.open(name, link);
-//     });
-//     return card.generateCard();
-// }
-
 const cardList = new Section ({
     items: initialCards,
     renderer: (item) => {
@@ -46,7 +36,7 @@ const cardList = new Section ({
 cardList.renderItems();
 
 const popupImageBig = new PopupWithImage(popupImage);
-popupImageBig._setEventListeners();
+popupImageBig.setEventListeners();
 
 const popupFormCard = new PopupWithForm({
     popupSelector: popupPlace,
