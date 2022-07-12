@@ -1,6 +1,6 @@
-.popup-deleting__container{
+.popup-avatar-editing__container{
     width: 430px;
-    height: 181px;
+    height: 272px;
     background-color: white;
     border-radius: 10px;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 540px) {
-    .popup-deleting__container {
+    .popup-avatar-editing__container {
         width: 282px;
     }
 }
