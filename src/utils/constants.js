@@ -29,6 +29,12 @@ export const placeForm = document.forms.elementInfo;
 export const name = placeForm.elements.place;
 export const link = placeForm.elements.link;
 
+export const userInform = {
+    nameValueSelector: '.profile__name',
+    jobValueSelector: '.profile__description',
+    avatarSelector: '.profile__avatar'
+}
+
 export const config = {
     formElement: '.form',
     inputElement: '.popup__input',

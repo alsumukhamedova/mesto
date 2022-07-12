@@ -11,6 +11,9 @@ import { Section } from '../components/Section.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithImage } from "../components/PopupWithImage.js";
+import {PopupDeleteElement} from "../components/PopupDeleteElement";
+
+let userId;
 
 const profileValidation = new FormValidator(config, editForm);
 const elementValidation = new FormValidator(config, placeForm);
@@ -82,3 +85,41 @@ addButton.addEventListener('click', function () {
 popupPlaceClose.addEventListener('click', function () {
     popupFormCard.close()
 });
+
+const createUserInfo = new UserInfo (userInform);
+
+const api = new Api ({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
+    headers: {
+        authorization: '5aabf6d0-afc9-4754-bb00-4c52b48cbb27',
+        'Content-Type': 'application/json'
+    }
+});
+
+const allInfo = [api.getProfileInfo(), api.getInitialCards()];
+
+Promise.all ( allInfo )
+    .then(([userStats, data]) => {
+        createUserInfo.setUserInfo(userStats);
+        userId = userStats._id;
+        createNewCard.renderItems(data);
+    })
+    .catch ((err) => {
+        console.log (err);
+    })
+
+const deletePopup = new PopupDeleteElement(
+    {
+        submitSelector: (data, element, id) => {
+            api.deleteCard (data, id)
+                .then ((data) => {
+                    element.remove();
+                    deletePopup.close();
+                })
+                .catch ((err) => {
+                    console.log (err);
+                })
+        }},
+    '.popup-deleting');
+deletePopup.setEventListeners();
+
