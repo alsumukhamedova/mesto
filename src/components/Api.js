@@ -5,7 +5,7 @@ class Api {
     }
 
     getInitialCards() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-/cards', {
+        return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers
         })
             .then(res => {
@@ -20,7 +20,7 @@ class Api {
     }
 
     getProfileInfo() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-/users/me', {
+        return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers
         })
             .then(res => {
@@ -35,7 +35,7 @@ class Api {
     }
 
     updateProfileInfo(data) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-/users/me', {
+        return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers,
             method: 'PATCH',
             body: JSON.stringify(data)
@@ -52,7 +52,7 @@ class Api {
     }
 
     createNewCard(data) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-/cards', {
+        return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers,
             method: 'POST',
             body: JSON.stringify(data)
@@ -69,7 +69,7 @@ class Api {
     }
 
     deleteCard(data, cardId) {
-        return fetch('', {
+        return fetch(`${this._baseUrl}/cards/${cardId}`, {
             headers: this._headers,
             method: 'DELETE',
             body: JSON.stringify(data)
@@ -86,7 +86,7 @@ class Api {
     }
 
     updateProfileAvatar(data) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-/users/me/avatar', {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
             headers: this._headers,
             method: 'PATCH',
             body: JSON.stringify(data)
@@ -103,7 +103,7 @@ class Api {
     }
 
     likeCard(data, cardId) {
-        return fetch('', {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             headers: this._headers,
             method: 'PUT',
             body: JSON.stringify(data)
@@ -120,7 +120,7 @@ class Api {
     }
 
     dislikeCard(data, cardId) {
-        return fetch('', {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             headers: this._headers,
             method: 'DELETE',
             body: JSON.stringify(data)
@@ -138,9 +138,9 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
     headers: {
-        authorization: 'c56e30dc-2883-4270-a59e-b2f7bae969c6',
+        authorization: '5aabf6d0-afc9-4754-bb00-4c52b48cbb27',
         'Content-Type': 'application/json'
     }
 });

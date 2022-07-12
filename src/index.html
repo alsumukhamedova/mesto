@@ -34,7 +34,10 @@
                     <button type="button" class="element__delete-card"></button>
                     <div class="element__group">
                         <p class="element__name"></p>
-                        <button type="button" class="element__like"></button>
+                        <div class="element_liking">
+                            <button type="button" class="element__like"></button>
+                            <p class="element_likeCounter"></p>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -79,5 +82,16 @@
         <p class="popup-image__text"></p>
     </div>
 </div>
+
+<section class="popup popup-deleting">
+    <div class="popup-deleting__container">
+        <button class="popup__close popup-deleting__close-button" type="button" aria-label="Закрыть"></button>
+        <form class="popup__form popup-deleting__form" name="delete" novalidate>
+            <h3 class="popup__title">Вы уверены?</h3>
+            <button class="popup__button popup-deleting__form-button popup-deleting__submit-button" type="submit">Да</button>
+        </form>
+    </div>
+</section>
+
 </body>
 </html>
