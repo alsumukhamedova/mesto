@@ -77,19 +77,21 @@ popupFormCard.setEventListeners();
 const popupFormProfile = new PopupWithForm({
     popupSelector: popupProfile,
     handleFormSubmit: (info) => {
-        userInfo.setUserInfo(info.userInfo, info.editFormDescription)
+        newUserInfo.setUserInfo(data)
     }
 })
 popupFormProfile.setEventListeners();
 
 // Заполнение полей формы при открытии
 function fillProfileFields() {
-    nameInput.value = profileName.textContent;
-    descriptionInput.value = profileDescription.textContent;
+    const profileData = newUserInfo.getUserInfo();
+    nameInput.value = profileData.name;
+    descriptionInput.value = profileData.description;
+
 }
 
 editButton.addEventListener('click', function () {
-    const {userName, userDescription} = userInfo.getUserInfo();
+    const {userName, userDescription} = newUserInfo.getUserInfo();
     inputTypeUserInfo.value = userName;
     inputTypeDescription.value = userDescription;
     fillProfileFields();
@@ -109,7 +111,7 @@ popupPlaceClose.addEventListener('click', function () {
     popupFormCard.close()
 });
 
-const createUserInfo = new UserInfo(userInform);
+const newUserInfo = new UserInfo(userInform);
 
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
@@ -123,7 +125,7 @@ const allInfo = [api.getProfileInfo(), api.getInitialCards()];
 
 Promise.all(allInfo)
     .then(([userStats, data]) => {
-        createUserInfo.setUserInfo(userStats);
+        newUserInfo.setUserInfo(userStats);
         userId = userStats._id;
         cardList.renderItems(data);
     })
