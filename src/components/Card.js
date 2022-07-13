@@ -1,16 +1,16 @@
 export class Card {
-    constructor(data, userId, cardSelector) {
+    constructor({data, handleImageClick, deletePopup, likes, dislikes}, cardSelector, userId) {
         this._name = data.name;
         this._link = data.link;
-        this._likedCards = data.likedCards;
-        this._profile = data.profile;
-        this._userId = data.userId;
+        this._owner = data.owner;
+        this._likeCounter = data.likes;
+        this._id = data.id;
         this._cardSelector = cardSelector;
-        this._handleImageClick = data.handleImageClick;
-        this._deleteCardPopup = data.deleteCardPopup;
-        this._likes = data.like;
-        this._dislikes = data.dislike;
-        this._cardId = data.cardId;
+        this._handleImageClick = handleImageClick;
+        this._deletePopup = deletePopup;
+        this._likes = likes;
+        this._dislikes = dislikes;
+        this._userId = userId;
     }
 
     _getTemplate() {
@@ -22,16 +22,16 @@ export class Card {
         this._element.querySelector('.element__name').textContent = this._name;
         this._element.querySelector('.element__image').src = this._link;
         this._element.querySelector('.element__image').alt = this._name;
-        this._like = this._element.querySelector('.element__like');
+        this._likes = this._element.querySelector('.element__like');
         this._likeCounter = this._element.querySelector('.element_likeCounter');
-        this._likeCounter.textContent = this._likedCards.length;
+        this._likeCounter.textContent = this._likes.length;
 
         if (this._getLikes()) {
-            this._like.classList.add('element__like_active');
+            this._likes.classList.add('element__like_active');
         }
 
         this._deleteElementButton = this._element.querySelector('.element__delete-card')
-        if (this._userId === this._profile._userId) {
+        if (this._userId === this._owner) {
             this._deleteElementButton.classList.add('element__delete-card_visible')
         } else {
             this._deleteElementButton.classList.remove('element__delete-card_visible')
@@ -52,12 +52,12 @@ export class Card {
 
     _setEventListeners() {
 
-        this._like.addEventListener ('click', () => {
-            this._like =! this._like;
-            if (!this._like) {
-                this._likes (this._element, this._userId, this._likeCounter);
+        this._likes.addEventListener ('click', () => {
+            this._likes =! this._likes;
+            if (!this._likes) {
+                this._likes (this._element, this._id, this._likeCounter);
             } else {
-                this._dislikes (this._element, this._userId, this._likeCounter);
+                this._dislikes (this._element, this._id, this._likeCounter);
             }
         });
 
@@ -73,8 +73,8 @@ export class Card {
     }
 
     _getLikes() {
-        for (let i = 0; i < this._likedCards.length; i++) {
-            if (this._likedCards[i]._userId === this._userId) {
+        for (let i = 0; i < this._likes.length; i++) {
+            if (this._likes[i]._userId === this._id) {
                 return true;
             }
         }
