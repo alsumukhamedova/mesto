@@ -4,7 +4,7 @@ import {Api} from '../components/Api.js';
 import {
     popupImage, cardsContainer, nameInput, descriptionInput,
     popupProfile, popupPlace, placeForm, editButton, popupProfileClose, addButton,
-    popupPlaceClose, editForm, config, inputTypeUserInfo, inputTypeDescription, userInform
+    popupPlaceClose, editForm, config, inputTypeUserInfo, inputTypeDescription, userInform, popupDeleting
 } from '../utils/constants.js';
 // import {initialCards} from "../utils/constants.js";
 import {FormValidator} from "../components/FormValidator.js";
@@ -53,7 +53,7 @@ const createNewCard = (data) => {
             api.likeCard(cardElement, id)
                 .then((data) => {
                     cardElement.querySelector('.element__like').classList.add('element__like_active');
-                    cardElement.querySelector('.element_likeCounter').textContent = data._likes.length;
+                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
                 })
                 .catch((err) => {
                     console.log(err);
@@ -63,7 +63,7 @@ const createNewCard = (data) => {
             api.dislikeCard(cardElement, id)
                 .then((data) => {
                     cardElement.querySelector('.element__like').classList.remove('element__like_active');
-                    cardElement.querySelector('.element_likeCounter').textContent = data._likes.length;
+                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
                 })
                 .catch((err) => {
                     console.log(err);
@@ -159,7 +159,6 @@ const deletePopup = new PopupDeleteElement(
                 })
             deletePopup.close();
         }
-    },
-    '.popup-deleting');
+    }, popupDeleting);
 deletePopup.setEventListeners();
 
