@@ -124,32 +124,19 @@ const popupFormProfile = new PopupWithForm(
         popupProfile
     )
 ;
-
-editButton.addEventListener('click', () => {
-    fillProfileFields();
-})
 popupFormProfile.setEventListeners();
 
-// Заполнение по    лей формы при открытии
-function fillProfileFields() {
-    const profileData = newUserInfo.getUserInfo();
-    nameInput.value = profileData.name;
-    descriptionInput.value = profileData.description;
-
-}
 
 editButton.addEventListener('click', function () {
     const {userName, userDescription} = newUserInfo.getUserInfo();
     inputTypeUserInfo.value = userName;
     inputTypeDescription.value = userDescription;
-    fillProfileFields();
     popupFormProfile.open();
 })
 popupProfileClose.addEventListener('click', function () {
     popupFormProfile.close();
 });
 addButton.addEventListener('click', function () {
-    fillProfileFields();
     popupFormCard.open();
     elementValidation.toggleButtonState();
 });
