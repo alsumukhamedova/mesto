@@ -6,7 +6,7 @@ import {
     popupProfile, popupPlace, placeForm, editButton, popupProfileClose, addButton,
     popupPlaceClose, editForm, config, inputTypeUserInfo, inputTypeDescription, userInform
 } from '../utils/constants.js';
-import {initialCards} from "../utils/constants.js";
+// import {initialCards} from "../utils/constants.js";
 import {FormValidator} from "../components/FormValidator.js";
 import {Section} from '../components/Section.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
@@ -15,6 +15,24 @@ import {PopupWithImage} from "../components/PopupWithImage.js";
 import {PopupDeleteElement} from "../components/PopupDeleteElement";
 
 let userId;
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
+    headers: {
+        authorization: '5aabf6d0-afc9-4754-bb00-4c52b48cbb27',
+        'Content-Type': 'application/json'
+    }
+});
+const allInfo = [api.getProfileInfo(), api.getInitialCards()];
+
+Promise.all(allInfo)
+    .then(([userStats, data]) => {
+        newUserInfo.setUserInfo(userStats);
+        userId = userStats._id;
+        cardList.renderItems(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 
 const profileValidation = new FormValidator(config, editForm);
 const elementValidation = new FormValidator(config, placeForm);
@@ -25,64 +43,94 @@ elementValidation.enableValidation();
 const createNewCard = (data) => {
     const card = new Card({
         data,
-        handleImageClick: () => {
-            popupImageBig.open(data);
+        handleImageClick: (name, link) => {
+            popupImageBig.open(name, link);
         },
         deletePopup: (cardElement, id) => {
             deletePopup.open(cardElement, id)
         },
-        likes: (cardElement, id) => {
-            api.likeCard (cardElement, id)
-                .then ((data) => {
+        likeCard: (cardElement, id) => {
+            api.likeCard(cardElement, id)
+                .then((data) => {
                     cardElement.querySelector('.element__like').classList.add('element__like_active');
-                    cardElement.querySelector('.element_likeCounter').textContent = data._likes.length;
+                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
                 })
-                .catch ((err) => {
-                    console.log (err);
+                .catch((err) => {
+                    console.log(err);
                 })
         },
-        dislikes: (cardElement, id) => {
-            api.dislikeCard (cardElement, id)
-                .then ((data) => {
+        dislikeCard: (cardElement, id) => {
+            api.dislikeCard(cardElement, id)
+                .then((data) => {
                     cardElement.querySelector('.element__like').classList.remove('element__like_active');
-                    cardElement.querySelector('.element_likeCounter').textContent = data._likes.length;
+                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
                 })
-                .catch ((err) => {
-                    console.log (err);
+                .catch((err) => {
+                    console.log(err);
                 })
-        }}, '#card-template', userId);
+        }
+    }, userId, '#card-template');
     return card.generateCard();
 }
 
 const cardList = new Section({
-    items: initialCards,
     renderer: (item) => {
         cardList.addItem(createNewCard(item));
     }
 }, cardsContainer)
-cardList.renderItems();
 
 const popupImageBig = new PopupWithImage(popupImage);
 popupImageBig.setEventListeners();
 
-const popupFormCard = new PopupWithForm({
-    popupSelector: popupPlace,
-    handleFormSubmit: (item) => {
-        cardList.addItem(createNewCard({name: item.place, link: item.link}));
-    }
-});
+
+const popupFormCard = new PopupWithForm(
+    {
+        handleFormSubmit: (data) => {
+            popupFormCard.loading(true);
+            api.createNewCard(data)
+                .then((data) => {
+                    const cardFromPopup = createNewCard(data);
+                    cardList.addItem(cardFromPopup);
+                    popupFormCard.close();
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    popupFormCard.loading(false);
+                });
+        }
+    }, popupPlace);
 popupFormCard.setEventListeners();
 
+const popupFormProfile = new PopupWithForm(
+        {
+            handleFormSubmit: (data) => {
+                popupFormProfile.loading(true);
+                api.updateProfileInfo(data)
+                    .then((data) => {
+                        createNewCard.setUserInfo(data);
+                        popupFormProfile.close();
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+                    .finally(() => {
+                        popupFormProfile.loading(false);
+                    });
+            }
+        }
+        ,
+        popupProfile
+    )
+;
 
-const popupFormProfile = new PopupWithForm({
-    popupSelector: popupProfile,
-    handleFormSubmit: (info) => {
-        newUserInfo.setUserInfo(data)
-    }
+editButton.addEventListener('click', () => {
+    fillProfileFields();
 })
 popupFormProfile.setEventListeners();
 
-// Заполнение полей формы при открытии
+// Заполнение по    лей формы при открытии
 function fillProfileFields() {
     const profileData = newUserInfo.getUserInfo();
     nameInput.value = profileData.name;
@@ -112,26 +160,6 @@ popupPlaceClose.addEventListener('click', function () {
 });
 
 const newUserInfo = new UserInfo(userInform);
-
-const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
-    headers: {
-        authorization: '5aabf6d0-afc9-4754-bb00-4c52b48cbb27',
-        'Content-Type': 'application/json'
-    }
-});
-
-const allInfo = [api.getProfileInfo(), api.getInitialCards()];
-
-Promise.all(allInfo)
-    .then(([userStats, data]) => {
-        newUserInfo.setUserInfo(userStats);
-        userId = userStats._id;
-        cardList.renderItems(data);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
 
 const deletePopup = new PopupDeleteElement(
     {

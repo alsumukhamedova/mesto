@@ -6,16 +6,15 @@ export class UserInfo {
     };
 
     getUserInfo() {
-        const currentUserInfo = {};
-        currentUserInfo.name = this._profileName.textContent;
-        currentUserInfo.about = this._profileDescription.textContent;
-        currentUserInfo.avatar = this._profileAvatar.src;
-        return currentUserInfo;
+        const data = {}
+        data.name = this._profileName.textContent;
+        data.about = this._profileDescription.textContent;
+        return data;
     };
 
-    setUserInfo(currentUserInfo) {
-        this._profileName.textContent = currentUserInfo.name;
-        this._profileDescription.textContent = currentUserInfo.about;
-        this._profileAvatar.src = currentUserInfo.avatar;
+    setUserInfo(data) {
+        this._profileName.textContent = data.name;
+        this._profileDescription.textContent = data.about;
+        this._profileAvatar.src = data.avatar;
     }
 }
