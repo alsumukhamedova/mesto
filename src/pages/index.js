@@ -128,9 +128,9 @@ popupFormProfile.setEventListeners();
 
 
 editButton.addEventListener('click', function () {
-    const {userName, userDescription} = newUserInfo.getUserInfo();
-    inputTypeUserInfo.value = userName;
-    inputTypeDescription.value = userDescription;
+    const profileData = newUserInfo.getUserInfo();
+    inputTypeUserInfo.value = profileData.name;
+    inputTypeDescription.value = profileData.about;
     popupFormProfile.open();
 })
 popupProfileClose.addEventListener('click', function () {
