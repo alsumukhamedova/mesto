@@ -1,7 +1,7 @@
 import {Popup} from './Popup.js';
 
 export class PopupDeleteElement extends Popup {
-    constructor({data, submitSelector}, popupSelector) {
+    constructor({ data, submitSelector }, popupSelector) {
         super(popupSelector);
         this._submitSelector = submitSelector;
         this._data = data;

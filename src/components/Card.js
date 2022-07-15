@@ -60,18 +60,14 @@ export class Card {
                 this._dislikeCard (this._element, this._id, this._likeCounter);
             }
         });
-        //
-        // this._element.querySelector('.element__like').addEventListener('click', () => {
-        //     this._likeCard()
-        // });
-        this._element.querySelector('.element__delete-card').addEventListener('click', () => {
+
+        this._deleteElementButton.addEventListener('click', () => {
             this._deletePopup(this._element, this._id);
         });
         this._element.querySelector('.element__image').addEventListener('click', () => {
-            this._handleImageClick(this._link, this._name);
+            this._handleImageClick(this._name, this._link);
         });
     }
-
     _getLikes() {
         for (let i = 0; i < this._likes.length; i++) {
             if (this._likes[i]._id === this._userId) {

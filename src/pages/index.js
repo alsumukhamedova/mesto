@@ -53,7 +53,7 @@ const createNewCard = (data) => {
             api.likeCard(cardElement, id)
                 .then((data) => {
                     cardElement.querySelector('.element__like').classList.add('element__like_active');
-                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
+                    cardElement.querySelector('.element_likeCounter').textContent = data._likes.length;
                 })
                 .catch((err) => {
                     console.log(err);
@@ -63,7 +63,7 @@ const createNewCard = (data) => {
             api.dislikeCard(cardElement, id)
                 .then((data) => {
                     cardElement.querySelector('.element__like').classList.remove('element__like_active');
-                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
+                    cardElement.querySelector('.element_likeCounter').textContent = data._likes.length;
                 })
                 .catch((err) => {
                     console.log(err);
@@ -153,11 +153,11 @@ const deletePopup = new PopupDeleteElement(
             api.deleteCard(data, id)
                 .then((data) => {
                     element.remove();
-                    deletePopup.close();
                 })
                 .catch((err) => {
                     console.log(err);
                 })
+            deletePopup.close();
         }
     },
     '.popup-deleting');
