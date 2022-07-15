@@ -10,14 +10,14 @@ export class PopupDeleteElement extends Popup {
 
     open(element, id) {
         this._element = element;
-        this._id =  id;
+        this._element._id =  id;
         super.open();
     }
 
     setEventListeners() {
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._submitSelector (this._data, this._element, this._id);
+            this._submitSelector (this._data, this._element, this._element._id);
         });
 
         super.setEventListeners();

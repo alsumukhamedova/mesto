@@ -43,3 +43,12 @@
 @import url('../blocks/popup/__input-error/_active/popup__input-error_active.css');
 @import url('../blocks/popup/__label/popup__label.css');
 
+@import url('../blocks/popup-deleting/__container/popup-deleting__container.css');
+@import url('../blocks/popup-deleting/__form/popup-deleting__form.css');
+@import url('../blocks/popup-deleting/__form-button/popup-deleting__form-button.css');
+@import url('../blocks/popup-avatar-editing/__container/popup-avatar-editing__container.css');
+@import url('../blocks/popup-avatar-editing/__form/popup-avatar-editing__form.css');
+@import url('../blocks/popup-avatar-editing/__input-error/popup-avatar-editing__input-error.css');
+
+
+

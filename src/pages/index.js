@@ -46,8 +46,8 @@ const createNewCard = (data) => {
         handleImageClick: (name, link) => {
             popupImageBig.open(name, link);
         },
-        deletePopup: (cardElement, id) => {
-            deletePopup.open(cardElement, id)
+        deletePopup: (element, id) => {
+            deletePopup.open(element, id)
         },
         likeCard: (cardElement, id) => {
             api.likeCard(cardElement, id)
