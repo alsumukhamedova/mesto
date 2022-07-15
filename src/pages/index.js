@@ -89,8 +89,7 @@ const popupFormCard = new PopupWithForm(
             popupFormCard.loading(true);
             api.createNewCard(data)
                 .then((data) => {
-                    const cardFromPopup = createNewCard(data);
-                    cardList.addItem(cardFromPopup);
+                    cardList.addItem(createNewCard(data));
                     popupFormCard.close();
                 })
                 .catch((err) => {
@@ -109,7 +108,7 @@ const popupFormProfile = new PopupWithForm(
                 popupFormProfile.loading(true);
                 api.updateProfileInfo(data)
                     .then((data) => {
-                        createNewCard.setUserInfo(data);
+                        newUserInfo.setUserInfo(data);
                         popupFormProfile.close();
                     })
                     .catch((err) => {
