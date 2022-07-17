@@ -68,7 +68,11 @@ const createNewCard = (data) => {
             popupImageBig.open(name, link);
         },
         deletePopup: (element, id) => {
-            deletePopup.open(element, id)
+            console.log(data.owner);
+            if (data.owner._id === userId ) {
+                element.querySelector('.element__delete-card').classList.add('.element__delete-card_visible');
+                deletePopup.open(element, id)
+            }
         },
         likeCard: (cardElement, id) => {
             api.likeCard(cardElement, id)
@@ -153,6 +157,7 @@ const popupFormAvatar = new PopupWithForm (
             api.updateProfileAvatar(data)
                 .then((data) => {
                     document.querySelector(userInform.avatarSelector).src = data.avatar;
+                    console.log(document.querySelector(userInform.avatarSelector));
                     popupFormAvatar.close();
                 })
                 .catch ((err) => {

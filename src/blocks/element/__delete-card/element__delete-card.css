@@ -12,8 +12,8 @@
     height: 20px;
     background-repeat: no-repeat;
     background-position: center;
-    visibility: visible;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .element__delete-card:hover {
