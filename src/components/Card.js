@@ -53,11 +53,10 @@ export class Card {
     _setEventListeners() {
 
         this._like.addEventListener ('click', () => {
-            this._like =! this._like;
-            if (!this._like) {
-                this._likeCard (this._element, this._id, this._likeCounter);
-            } else {
+            if (this._like.classList.contains('element__like_active')) {
                 this._dislikeCard (this._element, this._id, this._likeCounter);
+            } else {
+                this._likeCard (this._element, this._id, this._likeCounter);
             }
         });
 

@@ -68,7 +68,6 @@ const createNewCard = (data) => {
             popupImageBig.open(name, link);
         },
         deletePopup: (element, id) => {
-            console.log(data.owner);
             if (data.owner._id === userId ) {
                 element.querySelector('.element__delete-card').classList.add('.element__delete-card_visible');
                 deletePopup.open(element, id)
