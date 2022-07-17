@@ -8,6 +8,7 @@ export const editButton = profile.querySelector('.profile__edit-button');
 export const popupProfile = document.querySelector('#edit')
 export const popupPlace = document.querySelector('#place')
 export const popupImage = document.querySelector('.popup-image');
+export const popupDeleting = document.querySelector('.popup-deleting');
 
 export const popupProfileClose = popupProfile.querySelector('.popup__close')
 export const popupPlaceClose = popupPlace.querySelector('.popup__close')

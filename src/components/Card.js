@@ -4,7 +4,7 @@ export class Card {
         this._link = data.link;
         this._likes = data.likes;
         this._owner = data.owner;
-        this._id = data.id;
+        this._id = data._id;
         this._deletePopup = deletePopup;
         this._likeCard = likeCard;
         this._dislikeCard = dislikeCard;
