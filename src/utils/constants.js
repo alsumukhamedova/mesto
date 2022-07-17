@@ -17,15 +17,18 @@ export const popupImageClose = popupImage.querySelector('.popup__close')
 export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
 export const profileAvatar = document.querySelector ('.avatar__pic');
+export const profileEditingPopup = document.querySelector('.popup-avatar-editing');
 export const popupImageImage = document.querySelector('.popup-image__image');
 export const popupImageText = document.querySelector('.popup-image__text');
 export const profileForm = popupProfile.querySelector('.popup__form');
+export const avatarEditingForm = document.querySelector('.popup-avatar-editing__form');
 export const inputTypeUserInfo = document.querySelector('.popup__input_type_userInfo');
 export const inputTypeDescription = document.querySelector('.popup__input_type_editFormDescription');
 
 export const editForm = document.forms.editForm;
 export const nameInput = editForm.elements.userInfo;
 export const descriptionInput = editForm.elements.editFormDescription;
+
 
 export const placeForm = document.forms.elementInfo;
 export const name = placeForm.elements.place;

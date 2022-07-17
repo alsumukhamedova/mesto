@@ -2,9 +2,23 @@ import './index.css';
 import {Card} from '../components/Card.js';
 import {Api} from '../components/Api.js';
 import {
-    popupImage, cardsContainer, popupDeleting,
-    popupProfile, popupPlace, placeForm, editButton, popupProfileClose, addButton,
-    popupPlaceClose, editForm, config, inputTypeUserInfo, inputTypeDescription, userInform
+    popupImage,
+    cardsContainer,
+    popupDeleting,
+    popupProfile,
+    popupPlace,
+    placeForm,
+    editButton,
+    popupProfileClose,
+    addButton,
+    popupPlaceClose,
+    editForm,
+    config,
+    inputTypeUserInfo,
+    inputTypeDescription,
+    userInform,
+    profileEditingPopup,
+    avatarEditingForm
 } from '../utils/constants.js';
 // import {initialCards} from "../utils/constants.js";
 import {FormValidator} from "../components/FormValidator.js";
@@ -36,9 +50,16 @@ Promise.all(allInfo)
 
 const profileValidation = new FormValidator(config, editForm);
 const elementValidation = new FormValidator(config, placeForm);
+const avatarEditingValidation = new FormValidator (config, avatarEditingForm);
 
 profileValidation.enableValidation();
 elementValidation.enableValidation();
+avatarEditingValidation.enableValidation();
+
+document.querySelector('.avatar__editButton').addEventListener('click', () => {
+    avatarEditingValidation.resetPopupForm();
+    popupFormAvatar.open();
+});
 
 const createNewCard = (data) => {
     const card = new Card({
@@ -126,6 +147,22 @@ const popupFormProfile = new PopupWithForm(
 ;
 popupFormProfile.setEventListeners();
 
+const popupFormAvatar = new PopupWithForm (
+    {handleFormSubmit: (data) => {
+            popupFormAvatar.loading (true);
+            api.updateProfileAvatar(data)
+                .then((data) => {
+                    document.querySelector(userInform.avatarSelector).src = data.avatar;
+                    popupFormAvatar.close();
+                })
+                .catch ((err) => {
+                    console.log (err);
+                })
+                .finally (() => {
+                    popupFormAvatar.loading(false);
+                });
+        }}, profileEditingPopup);
+popupFormAvatar.setEventListeners();
 
 editButton.addEventListener('click', function () {
     const profileData = newUserInfo.getUserInfo();
@@ -163,4 +200,3 @@ const deletePopup = new PopupDeleteElement(
     },
     popupDeleting);
 deletePopup.setEventListeners();
-
