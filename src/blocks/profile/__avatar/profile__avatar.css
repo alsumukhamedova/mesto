@@ -5,11 +5,11 @@
     position: relative;
 }
 
-.profile__avatar:hover .avatar__editButton {
+.profile__avatar:hover .profile__editButton {
     opacity: 1;
     z-index: 1;
 }
-.profile__avatar:hover .avatar__pic {
+.profile__avatar:hover .profile__pic {
     background-color: black;
     opacity: 0.8;
 }

@@ -56,7 +56,7 @@ profileValidation.enableValidation();
 elementValidation.enableValidation();
 avatarEditingValidation.enableValidation();
 
-document.querySelector('.avatar__editButton').addEventListener('click', () => {
+document.querySelector('.profile__editButton').addEventListener('click', () => {
     avatarEditingValidation.resetPopupForm();
     popupFormAvatar.open();
 });

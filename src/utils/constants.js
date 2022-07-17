@@ -16,7 +16,7 @@ export const popupImageClose = popupImage.querySelector('.popup__close')
 
 export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
-export const profileAvatar = document.querySelector ('.avatar__pic');
+export const profileAvatar = document.querySelector ('.profile__pic');
 export const profileEditingPopup = document.querySelector('.popup-avatar-editing');
 export const popupImageImage = document.querySelector('.popup-image__image');
 export const popupImageText = document.querySelector('.popup-image__text');
