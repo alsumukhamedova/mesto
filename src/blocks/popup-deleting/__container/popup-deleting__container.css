@@ -1,11 +1,11 @@
 .popup-deleting__container{
-    width: 430px;
-    height: 181px;
-    background-color: white;
-    border-radius: 10px;
+    position: relative;
     display: flex;
     justify-content: center;
-    position: relative;
+    width: 430px;
+    height: 181px;
+    border-radius: 10px;
+    background-color: white;
 }
 
 @media screen and (max-width: 540px) {
