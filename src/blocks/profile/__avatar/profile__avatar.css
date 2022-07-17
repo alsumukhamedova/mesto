@@ -2,4 +2,14 @@
     border-radius: 100%;
     width: 120px;
     height: 120px;
+    position: relative;
+}
+
+.profile__avatar:hover .avatar__editButton {
+    opacity: 1;
+    z-index: 1;
+}
+.profile__avatar:hover .avatar__pic {
+    background-color: black;
+    opacity: 0.8;
 }

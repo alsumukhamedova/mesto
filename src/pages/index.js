@@ -102,6 +102,7 @@ const popupFormCard = new PopupWithForm(
     }, popupPlace);
 popupFormCard.setEventListeners();
 
+
 const popupFormProfile = new PopupWithForm(
         {
             handleFormSubmit: (data) => {

@@ -14,7 +14,10 @@
     <main class="content">
         <section class="profile">
             <div class="profile__part">
-                <img src="<%=require('./images/image.png')%>" alt="Фотография профиля" class="profile__avatar">
+                <div class="profile__avatar">
+                    <button class="avatar__editButton" type="button" aria-label="Изменить_аватар"></button>
+                    <img class="avatar__pic" src="" alt="аватар">
+                </div>
                 <div class="profile__info">
                     <h1 class="profile__name"></h1>
                     <p class="profile__description"></p>
