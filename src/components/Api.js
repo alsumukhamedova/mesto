@@ -4,11 +4,11 @@ export class Api {
         this._headers = options.headers;
     }
 
-    _getResponseData(res) {
-        if (!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`);
+    getResponseData(res) {
+        if (res.ok) {
+            return res.json();
         }
-        return res.json();
+        return Promise.reject(res.status);
     }
 
     getInitialCards() {
@@ -16,11 +16,8 @@ export class Api {
             headers: this._headers
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err);
-            });
     }
 
     getProfileInfo() {
@@ -28,11 +25,8 @@ export class Api {
             headers: this._headers
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err);
-            });
     }
 
     updateProfileInfo(data) {
@@ -42,11 +36,8 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
     }
 
     createNewCard(data) {
@@ -56,11 +47,8 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
     }
 
     deleteCard(data, cardId) {
@@ -70,11 +58,8 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
     }
 
     updateProfileAvatar(data) {
@@ -84,11 +69,8 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
     }
 
     likeCard(data, cardId) {
@@ -98,11 +80,8 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
     }
 
     dislikeCard(data, cardId) {
@@ -112,10 +91,7 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this._getResponseData(res);
+                this.getResponseData (res)
             })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
     }
 }
