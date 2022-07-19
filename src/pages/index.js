@@ -191,7 +191,7 @@ const newUserInfo = new UserInfo(userInform);
 
 const deletePopup = new PopupDeleteElement(
     {
-        submitSelector: (data, element, id) => {
+        callbackSubmit: (data, element, id) => {
             api.deleteCard(data, id)
                 .then((data) => {
                     element.remove();
