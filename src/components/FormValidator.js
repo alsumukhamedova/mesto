@@ -40,15 +40,12 @@ export class FormValidator {
         this.toggleButtonState(this._inputList, this._buttonElement);
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this.toggleButtonState(this._inputList, this._buttonElement);
+                this.toggleButtonState();
                 this._checkInputValidity(inputElement);
             });
         });
     };
     enableValidation() {
-        this._form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
         this._setEventListeners(this._form, this._config);
     };
     resetPopupForm() {
