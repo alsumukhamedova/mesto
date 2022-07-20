@@ -73,8 +73,7 @@ const createNewCard = (data) => {
         likeCard: (cardElement, id) => {
             api.likeCard(cardElement, id)
                 .then((data) => {
-                    this._likeCard();
-                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
+                    card.updateLikes(data);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -83,7 +82,7 @@ const createNewCard = (data) => {
         dislikeCard: (cardElement, id) => {
             api.dislikeCard(cardElement, id)
                 .then((data) => {
-                    cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
+                    card.updateLikes(data);
                 })
                 .catch((err) => {
                     console.log(err);
