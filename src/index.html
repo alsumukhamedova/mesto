@@ -54,7 +54,7 @@
     <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form form" name="editForm" action="#" method="POST" novalidate>
+        <form class="popup__form form" name="editForm" novalidate>
             <input type="text" placeholder="Имя" class="popup__input popup__input_type_userInfo" name="name" required pattern="[a-zA-Zа-яА-Я\s\-]+" minlength="2" maxlength="40" id="name-input">
             <span class="popup__input-error name-input-error"></span>
             <input type="text" placeholder="О себе" class="popup__input popup__input_type_editFormDescription" name="about" required minlength="2" maxlength="200" id="description-input">
@@ -68,7 +68,7 @@
     <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form form" action="#" method="POST" name="elementInfo" novalidate>
+        <form class="popup__form form" name="elementInfo" novalidate>
             <input type="text" name="name" placeholder="Название" class="popup__input popup__input_type_place" required minlength="2" maxlength="30" id="place-input">
             <span class="popup__input-error place-input-error"></span>
             <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" required id="url-input">

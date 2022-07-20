@@ -16,7 +16,7 @@ export class Api {
             headers: this._headers
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData(res)
             })
     }
 
@@ -25,7 +25,7 @@ export class Api {
             headers: this._headers
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData(res)
             })
     }
 
@@ -36,7 +36,7 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData (res)
             })
     }
 
@@ -47,7 +47,7 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData (res)
             })
     }
 
@@ -58,7 +58,7 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData (res)
             })
     }
 
@@ -69,7 +69,7 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData (res)
             })
     }
 
@@ -80,7 +80,7 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData (res)
             })
     }
 
@@ -91,7 +91,7 @@ export class Api {
             body: JSON.stringify(data)
         })
             .then(res => {
-                this.getResponseData (res)
+                return this.getResponseData (res)
             })
     }
 }

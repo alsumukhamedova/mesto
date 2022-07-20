@@ -40,15 +40,15 @@ export class Card {
         return this._element;
     }
 
-    // _deleteCard() {
-    //     this._element.remove();
-    //     this._element = null;
-    // }
-    //
-    // _likeCard() {
-    //     const buttonLike = this._element.querySelector('.element__like');
-    //     buttonLike.classList.toggle('element__like_active');
-    // }
+    _deleteCard() {
+        this._element.remove();
+        this._element = null;
+    }
+
+    _likeCard() {
+        const buttonLike = this._element.querySelector('.element__like');
+        buttonLike.classList.toggle('element__like_active');
+    }
 
     _setEventListeners() {
 

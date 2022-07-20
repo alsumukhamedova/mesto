@@ -20,7 +20,6 @@ import {
     profileEditingPopup,
     avatarEditingForm
 } from '../utils/constants.js';
-// import {initialCards} from "../utils/constants.js";
 import {FormValidator} from "../components/FormValidator.js";
 import {Section} from '../components/Section.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
@@ -37,6 +36,7 @@ const api = new Api({
     }
 });
 const allInfo = [api.getProfileInfo(), api.getInitialCards()];
+console.log(allInfo);
 
 Promise.all(allInfo)
     .then(([userStats, data]) => {
@@ -50,7 +50,7 @@ Promise.all(allInfo)
 
 const profileValidation = new FormValidator(config, editForm);
 const elementValidation = new FormValidator(config, placeForm);
-const avatarEditingValidation = new FormValidator (config, avatarEditingForm);
+const avatarEditingValidation = new FormValidator(config, avatarEditingForm);
 
 profileValidation.enableValidation();
 elementValidation.enableValidation();
@@ -68,15 +68,12 @@ const createNewCard = (data) => {
             popupImageBig.open(name, link);
         },
         deletePopup: (element, id) => {
-            if (data.owner._id === userId ) {
-                element.querySelector('.element__delete-card').classList.add('.element__delete-card_visible');
-                deletePopup.open(element, id)
-            }
+            deletePopup.open(element, id)
         },
         likeCard: (cardElement, id) => {
             api.likeCard(cardElement, id)
                 .then((data) => {
-                    cardElement.querySelector('.element__like').classList.add('element__like_active');
+                    this._likeCard();
                     cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
                 })
                 .catch((err) => {
@@ -86,7 +83,6 @@ const createNewCard = (data) => {
         dislikeCard: (cardElement, id) => {
             api.dislikeCard(cardElement, id)
                 .then((data) => {
-                    cardElement.querySelector('.element__like').classList.remove('element__like_active');
                     cardElement.querySelector('.element_likeCounter').textContent = data.likes.length;
                 })
                 .catch((err) => {
@@ -150,22 +146,24 @@ const popupFormProfile = new PopupWithForm(
 ;
 popupFormProfile.setEventListeners();
 
-const popupFormAvatar = new PopupWithForm (
-    {handleFormSubmit: (data) => {
-            popupFormAvatar.loading (true);
+const popupFormAvatar = new PopupWithForm(
+    {
+        handleFormSubmit: (data) => {
+            popupFormAvatar.loading(true);
             api.updateProfileAvatar(data)
                 .then((data) => {
-                    document.querySelector(userInform.avatarSelector).src = data.avatar;
+                    // document.querySelector(userInform.avatarSelector).src = data.avatar;
                     console.log(document.querySelector(userInform.avatarSelector));
                     popupFormAvatar.close();
                 })
-                .catch ((err) => {
-                    console.log (err);
+                .catch((err) => {
+                    console.log(err);
                 })
-                .finally (() => {
+                .finally(() => {
                     popupFormAvatar.loading(false);
                 });
-        }}, profileEditingPopup);
+        }
+    }, profileEditingPopup);
 popupFormAvatar.setEventListeners();
 
 editButton.addEventListener('click', function () {
@@ -194,12 +192,12 @@ const deletePopup = new PopupDeleteElement(
         callbackSubmit: (data, element, id) => {
             api.deleteCard(data, id)
                 .then((data) => {
-                    element.remove();
+                    this._deleteCard();
+                    deletePopup.close();
                 })
                 .catch((err) => {
                     console.log(err);
                 })
-            deletePopup.close();
         }
     },
     popupDeleting);

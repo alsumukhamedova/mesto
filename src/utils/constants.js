@@ -37,7 +37,7 @@ export const link = placeForm.elements.link;
 export const userInform = {
     nameValueSelector: '.profile__name',
     jobValueSelector: '.profile__description',
-    avatarSelector: '.avatar__pic'
+    avatarSelector: '.profile__pic'
 }
 
 export const config = {
