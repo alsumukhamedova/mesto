@@ -1,12 +1,11 @@
 export class Card {
-    constructor({data, handleImageClick, deletePopup, likeCard, dislikeCard}, userId, cardSelector) {
+    constructor({data, handleImageClick, deletePopup, handleLike}, userId, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes;
         this._owner = data.owner;
         this._id = data._id;
-        this._sendLike = sendLike;
-        this._sendDislike = sendDislike;
+        this._handleLike = handleLike;
         this._deletePopup = deletePopup;
         this._userId = userId;
         this._cardSelector = cardSelector;
@@ -32,53 +31,35 @@ export class Card {
 
         this._deleteElementButton = this._element.querySelector('.element__delete-card')
         if (this._userId === this._owner._id) {
-            this._deleteElementButton.classList.add('element__delete-card_visible')
+            this._deleteElementButton.classList.add('element__delete-card_visible');
         } else {
-            this._deleteElementButton.classList.remove('element__delete-card_visible')
+            this._deleteElementButton.classList.remove('element__delete-card_visible');
         }
         this._setEventListeners();
         return this._element;
     }
 
-    _deleteCard() {
+    deleteCard() {
         this._element.remove();
-        this._element = null;
     }
-
-    // _likeCard(data) {
-    //     this._element.querySelector('.element__like').classList.add('element__like_active');
-    //     this._element.querySelector('.element_likeCounter').textContent = data.querySelector('.element_likeCounter').length;
-    //     console.log(data.querySelector('.element_likeCounter').length)
-    // }
-
-    // _dislikeCard(data) {
-    //     this._element.querySelector('.element__like').classList.remove('element__like_active');
-    //     this._element.querySelector('.element_likeCounter').textContent = data.likes.length;
-    // }
 
     isLiked() {
         return this._likes.some((like) => like._id === this._userId)
     }
 
-    updateLikes(data) {
+    updateLikes(data, liked) {
         this._element.querySelector('.element_likeCounter').textContent = data.likes.length;
-        if (this.isLiked()) {
+        if (!liked) {
             this._element.querySelector('.element__like').classList.add('element__like_active');
-            // this._sendLike(this._element, this._id);
         } else {
             this._element.querySelector('.element__like').classList.remove('element__like_active');
-            // this._sendDislike(this._element, this._id);
         }
     }
 
     _setEventListeners() {
 
         this._like.addEventListener ('click', () => {
-            if (this._like.classList.contains('element__like_active')) {
-                this._dislikeCard (this._element, this._id, this._likeCounter);
-            } else {
-                this._likeCard (this._element, this._id, this._likeCounter);
-            }
+            this._handleLike(this._element, this._id);
         });
 
         this._deleteElementButton.addEventListener('click', () => {

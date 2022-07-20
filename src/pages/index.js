@@ -70,24 +70,27 @@ const createNewCard = (data) => {
         deletePopup: (element, id) => {
             deletePopup.open(element, id)
         },
-        likeCard: (cardElement, id) => {
-            api.likeCard(cardElement, id)
-                .then((data) => {
-                    card.updateLikes(data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
+        handleLike: (cardElement, id) => {
+            let liked = card.isLiked()
+            if (!liked){
+                api.likeCard(cardElement, id)
+                    .then((data) => {
+                        card.updateLikes(data, liked);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            } else {
+                api.dislikeCard(cardElement, id)
+                    .then((data) => {
+                        card.updateLikes(data, liked);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            }
+
         },
-        dislikeCard: (cardElement, id) => {
-            api.dislikeCard(cardElement, id)
-                .then((data) => {
-                    card.updateLikes(data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
     }, userId, '#card-template');
     return card.generateCard();
 }
@@ -138,8 +141,7 @@ const popupFormProfile = new PopupWithForm(
                         popupFormProfile.loading(false);
                     });
             }
-        }
-        ,
+        },
         popupProfile
     )
 ;
@@ -190,14 +192,14 @@ const deletePopup = new PopupDeleteElement(
     {
         callbackSubmit: (data, element, id) => {
             api.deleteCard(data, id)
-                .then((data) => {
-                    this._deleteCard();
-                    deletePopup.close();
+                .then(() => {
+                    this.deleteCard();
+                    this.close();
                 })
                 .catch((err) => {
                     console.log(err);
                 })
-        }
+        },
     },
     popupDeleting);
 deletePopup.setEventListeners();
