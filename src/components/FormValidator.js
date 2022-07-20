@@ -23,8 +23,8 @@ export class FormValidator {
     } else {
         this._hideInputError(inputElement);
     }};
-    _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+    _hasInvalidInput() {
+    return this._inputList.some((inputElement) => {
         return !inputElement.validity.valid;
     });}
     toggleButtonState(inputList=this._inputList, buttonElement=this._buttonElement) {
