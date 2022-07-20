@@ -5,8 +5,7 @@ export class Card {
         this._likes = data.likes;
         this._owner = data.owner;
         this._id = data._id;
-        this._sendLike = sendLike;
-        this._sendDislike = sendDislike;
+        this._handleLike = handleLike;
         this._deletePopup = deletePopup;
         this._userId = userId;
         this._cardSelector = cardSelector;
@@ -40,7 +39,7 @@ export class Card {
         return this._element;
     }
 
-    _deleteCard() {
+    deleteCard() {
         this._element.remove();
         this._element = null;
     }

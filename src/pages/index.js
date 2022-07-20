@@ -190,9 +190,9 @@ const deletePopup = new PopupDeleteElement(
     {
         callbackSubmit: (data, element, id) => {
             api.deleteCard(data, id)
-                .then((data) => {
-                    this._deleteCard();
-                    deletePopup.close();
+                .then(() => {
+                    this.deleteCard();
+                    this.close();
                 })
                 .catch((err) => {
                     console.log(err);
