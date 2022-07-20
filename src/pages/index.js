@@ -152,9 +152,7 @@ const popupFormAvatar = new PopupWithForm(
         handleFormSubmit: (data) => {
             popupFormAvatar.loading(true);
             api.updateProfileAvatar(data)
-                .then((data) => {
-                    // document.querySelector(userInform.avatarSelector).src = data.avatar;
-                    console.log(document.querySelector(userInform.avatarSelector));
+                .then(() => {
                     popupFormAvatar.close();
                 })
                 .catch((err) => {
