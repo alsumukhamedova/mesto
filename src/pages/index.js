@@ -71,7 +71,7 @@ const createNewCard = (data) => {
             deletePopup.open(element, id)
         },
         handleLike: (cardElement, id) => {
-            let liked = card.isLiked()
+            const liked = card.isLiked()
             if (!liked){
                 api.likeCard(cardElement, id)
                     .then((data) => {

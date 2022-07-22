@@ -37,7 +37,7 @@ export class FormValidator {
             }
     };
     _setEventListeners() {
-        this.toggleButtonState(this._inputList, this._buttonElement);
+        this.toggleButtonState();
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this.toggleButtonState();
@@ -46,7 +46,7 @@ export class FormValidator {
         });
     };
     enableValidation() {
-        this._setEventListeners(this._form, this._config);
+        this._setEventListeners();
     };
     resetPopupForm() {
         this.toggleButtonState();
