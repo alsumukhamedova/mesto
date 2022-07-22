@@ -109,6 +109,7 @@ popupImageBig.setEventListeners();
 const popupFormCard = new PopupWithForm(
     {
         handleFormSubmit: (data) => {
+            event.preventDefault();
             popupFormCard.loading(true);
             api.createNewCard(data)
                 .then((data) => {
