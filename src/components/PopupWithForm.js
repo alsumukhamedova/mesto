@@ -1,4 +1,5 @@
 import {Popup} from './Popup.js';
+import {profileAvatar} from "../utils/constants";
 
 export class PopupWithForm extends Popup {
     constructor({handleFormSubmit}, popupSelector) {
@@ -16,11 +17,6 @@ export class PopupWithForm extends Popup {
         });
         return inputValues;
     };
-    // _submitForm = (evt) => {
-    //     evt.preventDefault();
-    //     this._handleFormSubmit(this._getInputValues());
-    //     this.close();
-    // };
 
     setEventListeners() {
         super.setEventListeners();
@@ -32,6 +28,10 @@ export class PopupWithForm extends Popup {
         })
         this.close();
     };
+    
+    setAvatar(avatar) {
+        profileAvatar.src = avatar
+    }
 
     close() {
         super.close();

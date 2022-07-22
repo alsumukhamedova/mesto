@@ -31,6 +31,7 @@ let userId;
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
     headers: {
+        Accept: 'application/json',
         authorization: '5aabf6d0-afc9-4754-bb00-4c52b48cbb27',
         'Content-Type': 'application/json'
     }
@@ -150,6 +151,7 @@ popupFormProfile.setEventListeners();
 const popupFormAvatar = new PopupWithForm(
     {
         handleFormSubmit: (data) => {
+            event.preventDefault();
             popupFormAvatar.loading(true);
             api.updateProfileAvatar(data)
                 .then(() => {
