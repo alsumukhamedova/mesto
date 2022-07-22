@@ -69,7 +69,7 @@ const createNewCard = (data) => {
             popupImageBig.open(name, link);
         },
         deletePopup: (element, id) => {
-            deletePopup.open(element, id)
+            deletePopup.open(card, element, id)
         },
         handleLike: (cardElement, id) => {
             const liked = card.isLiked()
@@ -194,8 +194,7 @@ const deletePopup = new PopupDeleteElement(
         callbackSubmit: (data, element, id) => {
             api.deleteCard(data, id)
                 .then(() => {
-                    this.deleteCard();
-                    this.close();
+                    deletePopup.closeAndDeleteCard()
                 })
                 .catch((err) => {
                     console.log(err);

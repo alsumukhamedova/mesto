@@ -8,10 +8,17 @@ export class PopupDeleteElement extends Popup {
         this._form = this._popup.querySelector('.popup__form')
     }
 
-    open(element, id) {
+    open(card, element, id) {
+        console.log("opened card:", card)
+        this._card = card;
         this._element = element;
         this._element._id =  id;
         super.open();
+    }
+
+    closeAndDeleteCard() {
+        this.close()
+        this._card.deleteCard()
     }
 
     setEventListeners() {
