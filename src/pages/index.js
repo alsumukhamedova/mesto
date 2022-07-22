@@ -171,18 +171,18 @@ editButton.addEventListener('click', function () {
     inputTypeDescription.value = profileData.about;
     popupFormProfile.open();
 })
-popupProfileClose.addEventListener('click', function () {
-    popupFormProfile.close();
-});
+// popupProfileClose.addEventListener('click', function () {
+//     popupFormProfile.close();
+// });
 addButton.addEventListener('click', function () {
     popupFormCard.open();
     elementValidation.toggleButtonState();
 });
 
 // Закрывает popup добавления места
-popupPlaceClose.addEventListener('click', function () {
-    popupFormCard.close()
-});
+// popupPlaceClose.addEventListener('click', function () {
+//     popupFormCard.close()
+// });
 
 const newUserInfo = new UserInfo(userInform);
 
