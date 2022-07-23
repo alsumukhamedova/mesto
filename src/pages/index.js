@@ -156,6 +156,7 @@ const popupFormAvatar = new PopupWithForm(
             popupFormAvatar.loading(true);
             api.updateProfileAvatar(data)
                 .then(() => {
+                    popupFormAvatar.setAvatar(data.avatar);
                     popupFormAvatar.close();
                 })
                 .catch((err) => {
