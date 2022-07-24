@@ -130,9 +130,11 @@ popupFormCard.setEventListeners();
 const popupFormProfile = new PopupWithForm(
         {
             handleFormSubmit: (data) => {
+                event.preventDefault();
                 popupFormProfile.loading(true);
                 api.updateProfileInfo(data)
                     .then((data) => {
+                        console.log(newUserInfo);
                         newUserInfo.setUserInfo(data);
                         popupFormProfile.close();
                     })
