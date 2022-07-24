@@ -134,7 +134,6 @@ const popupFormProfile = new PopupWithForm(
                 popupFormProfile.loading(true);
                 api.updateProfileInfo(data)
                     .then((data) => {
-                        console.log(newUserInfo);
                         newUserInfo.setUserInfo(data);
                         popupFormProfile.close();
                     })
